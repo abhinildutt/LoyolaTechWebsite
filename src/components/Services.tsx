@@ -7,7 +7,8 @@ import {
   ChartBarIcon,
   PhotoIcon
 } from '@heroicons/react/24/outline';
-import { useRef, MouseEvent } from 'react';
+import { useRef } from 'react';
+import type { MouseEvent } from 'react';
 
 interface ServiceCardProps {
   service: {
