@@ -3,7 +3,7 @@ interface IconProps {
   color?: string;
 }
 
-const Web3Icon = ({ className = "w-16 h-16", color = "#7B3FE4" }: IconProps) => {
+const Web3Icon = ({ className = "w-16 h-16" }: IconProps) => {
   return (
     <svg
       viewBox="0 0 200 200"
