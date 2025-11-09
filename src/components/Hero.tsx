@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRightIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import AnimatedBackground from './AnimatedBackground';
 import BlockchainElements from './FloatingShapes';
 import BlockchainIcon from '../assets/icons/BlockchainIcon';
@@ -95,25 +96,29 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 rounded-lg font-semibold text-lg flex items-center space-x-2 transition-all"
-              style={{
-                background: 'linear-gradient(135deg, #00D4FF, #0066FF)',
-                boxShadow: '0 4px 20px rgba(0, 212, 255, 0.3)',
-              }}
-            >
-              <span>Get Started</span>
-              <ArrowRightIcon className="w-5 h-5" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 glass rounded-lg font-semibold text-lg border-glow transition-all"
-            >
-              Learn More
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 rounded-lg font-semibold text-lg flex items-center space-x-2 transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, #00D4FF, #0066FF)',
+                  boxShadow: '0 4px 20px rgba(0, 212, 255, 0.3)',
+                }}
+              >
+                <span>Get Started</span>
+                <ArrowRightIcon className="w-5 h-5" />
+              </motion.button>
+            </Link>
+            <Link to="/products">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 glass rounded-lg font-semibold text-lg border-glow transition-all"
+              >
+                Learn More
+              </motion.button>
+            </Link>
           </motion.div>
 
           {/* Feature Cards - Web3 Theme */}

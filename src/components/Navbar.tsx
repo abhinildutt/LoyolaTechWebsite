@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import LoyolaLogo from '../assets/logos/LoyolaLogo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,26 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsOpen(false);
+  };
+
+  const menuItems = [
+    { name: 'Home', path: '/', isRoute: true },
+    { name: 'Services', path: 'services', isRoute: false },
+    { name: 'Products', path: '/products', isRoute: true },
+    { name: 'About', path: 'about', isRoute: false },
+    { name: 'Contact', path: '/contact', isRoute: true },
+  ];
 
   return (
     <motion.nav
@@ -29,46 +50,63 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center space-x-3 cursor-pointer"
-          >
+          <Link to="/">
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 400 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center space-x-3 cursor-pointer"
             >
-              <LoyolaLogo className="w-12 h-12" animate={false} />
+              <img 
+                src="/LoyolaTechLogo.png" 
+                alt="Loyola Tech Logo" 
+                className="w-16 h-16 object-contain"
+              />
+              <span className="text-2xl font-bold text-gradient">
+                Loyola Tech
+              </span>
             </motion.div>
-            <span className="text-2xl font-bold text-gradient">
-              Loyola Tech
-            </span>
-          </motion.div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {['Home', 'Products', 'Services', 'About', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-gray-300 hover:text-white transition-colors cursor-pointer relative group"
-              >
-                {item}
-                <span
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                  style={{ background: 'linear-gradient(to right, #00D4FF, #0066FF)' }}
-                />
-              </a>
+            {menuItems.map((item) => (
+              item.isRoute ? (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="text-gray-300 hover:text-white transition-colors cursor-pointer relative group"
+                >
+                  {item.name}
+                  <span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
+                    style={{ background: 'linear-gradient(to right, #00D4FF, #0066FF)' }}
+                  />
+                </Link>
+              ) : (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.path)}
+                  className="text-gray-300 hover:text-white transition-colors cursor-pointer relative group"
+                >
+                  {item.name}
+                  <span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
+                    style={{ background: 'linear-gradient(to right, #00D4FF, #0066FF)' }}
+                  />
+                </button>
+              )
             ))}
-            <button
-              className="px-6 py-2 rounded-lg font-semibold transition-all"
-              style={{
-                background: 'linear-gradient(135deg, #00D4FF, #0066FF)',
-                boxShadow: '0 4px 15px rgba(0, 212, 255, 0.3)',
-              }}
-            >
-              Get Started
-            </button>
+            <Link to="/contact">
+              <button
+                className="px-6 py-2 rounded-lg font-semibold transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, #00D4FF, #0066FF)',
+                  boxShadow: '0 4px 15px rgba(0, 212, 255, 0.3)',
+                }}
+              >
+                Get Started
+              </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,15 +129,25 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden glass border-t border-glow">
           <div className="px-4 pt-2 pb-4 space-y-2">
-            {['Home', 'Products', 'Services', 'About', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block py-2 text-gray-300 hover:text-white transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </a>
+            {menuItems.map((item) => (
+              item.isRoute ? (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="block py-2 text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.path)}
+                  className="block py-2 text-gray-300 hover:text-white transition-colors text-left w-full"
+                >
+                  {item.name}
+                </button>
+              )
             ))}
           </div>
         </div>
