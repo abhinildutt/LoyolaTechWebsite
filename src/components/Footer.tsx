@@ -4,6 +4,7 @@ import {
   PhoneIcon, 
   MapPinIcon 
 } from '@heroicons/react/24/outline';
+import LoyolaLogo from '../assets/logos/LoyolaLogo';
 
 const Footer = () => {
   const footerLinks = {
@@ -37,11 +38,10 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
-                className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
-                <span className="text-white font-bold text-xl">L</span>
+                <LoyolaLogo className="w-12 h-12" animate={false} />
               </motion.div>
               <span className="text-2xl font-bold text-gradient">Loyola Tech</span>
             </motion.div>

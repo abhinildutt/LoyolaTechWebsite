@@ -1,99 +1,45 @@
 import { motion } from 'framer-motion';
 
-const FloatingShapes = () => {
-  const shapes = [
-    {
-      id: 1,
-      path: "M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z",
-      delay: 0,
-      duration: 15,
-      left: '10%',
-      top: '15%',
-      size: 60,
-      color: 'rgba(59, 130, 246, 0.2)',
-    },
-    {
-      id: 2,
-      path: "M3 3h18v18H3V3z",
-      delay: 2,
-      duration: 18,
-      left: '85%',
-      top: '25%',
-      size: 50,
-      color: 'rgba(139, 92, 246, 0.15)',
-    },
-    {
-      id: 3,
-      path: "M12 2L2 22h20L12 2z",
-      delay: 4,
-      duration: 20,
-      left: '20%',
-      top: '70%',
-      size: 70,
-      color: 'rgba(236, 72, 153, 0.2)',
-    },
-    {
-      id: 4,
-      path: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z",
-      delay: 1,
-      duration: 16,
-      left: '80%',
-      top: '65%',
-      size: 55,
-      color: 'rgba(34, 197, 94, 0.18)',
-    },
-    {
-      id: 5,
-      path: "M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z",
-      delay: 3,
-      duration: 22,
-      left: '70%',
-      top: '10%',
-      size: 45,
-      color: 'rgba(251, 191, 36, 0.15)',
-    },
+const BlockchainElements = () => {
+  // Blockchain cubes - subtle and themed
+  const blocks = [
+    { id: 1, left: '15%', top: '20%', delay: 0 },
+    { id: 2, left: '85%', top: '60%', delay: 1.5 },
+    { id: 3, left: '70%', top: '15%', delay: 3 },
   ];
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {shapes.map((shape) => (
+      {blocks.map((block) => (
         <motion.div
-          key={shape.id}
+          key={block.id}
           className="absolute"
           style={{
-            left: shape.left,
-            top: shape.top,
+            left: block.left,
+            top: block.top,
           }}
           animate={{
-            y: [0, -40, 0],
-            x: [0, 20, 0],
-            rotate: [0, 180, 360],
+            y: [0, -15, 0],
           }}
           transition={{
-            duration: shape.duration,
-            delay: shape.delay,
+            duration: 8,
+            delay: block.delay,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         >
+          {/* Blockchain Cube Icon */}
           <svg
-            width={shape.size}
-            height={shape.size}
+            width="40"
+            height="40"
             viewBox="0 0 24 24"
-            fill={shape.color}
-            stroke={shape.color}
+            fill="none"
+            stroke="rgba(0, 212, 255, 0.15)"
             strokeWidth="1"
           >
-            <motion.path
-              d={shape.path}
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+            <path d="M2 17L12 22L22 17" />
+            <path d="M2 12L12 17L22 12" />
           </svg>
         </motion.div>
       ))}
@@ -101,5 +47,5 @@ const FloatingShapes = () => {
   );
 };
 
-export default FloatingShapes;
+export default BlockchainElements;
 

@@ -1,43 +1,48 @@
 import { motion } from 'framer-motion';
 import { 
-  ShieldCheckIcon, 
   RocketLaunchIcon, 
-  UserGroupIcon,
   SparklesIcon,
   CubeIcon
 } from '@heroicons/react/24/outline';
+import SecurityShieldIcon from '../assets/icons/SecurityShieldIcon';
+import HandshakeIcon from '../assets/icons/HandshakeIcon';
+import LinkChainIcon from '../assets/icons/LinkChainIcon';
 
 const Values = () => {
   const values = [
     {
-      icon: ShieldCheckIcon,
+      icon: 'security',
       title: 'Security & Trust',
       description: 'Our commitment to delivering cutting-edge technology with a focus on security, scalability, and usability. Our blockchain-based solutions ensure the integrity of transactions and protect customer data.',
       color: 'text-blue-400',
+      iconColor: '#00D4FF',
       bgGradient: 'from-blue-500/20 to-blue-600/20',
       iconGradient: 'from-blue-400 to-blue-600',
     },
     {
-      icon: RocketLaunchIcon,
+      icon: 'innovation',
       title: 'Innovation',
       description: 'We strive to stay at the forefront of technological advancements, continuously refining and enhancing our solutions to meet the evolving needs of our clients.',
       color: 'text-purple-400',
+      iconColor: '#7B3FE4',
       bgGradient: 'from-purple-500/20 to-purple-600/20',
       iconGradient: 'from-purple-400 to-purple-600',
     },
     {
-      icon: UserGroupIcon,
+      icon: 'partnership',
       title: 'Partnership',
       description: 'Whether you are a small business looking to launch a loyalty program or a large enterprise seeking to transform your existing rewards system, Loyola Tech is your trusted partner.',
       color: 'text-pink-400',
+      iconColor: '#EC4899',
       bgGradient: 'from-pink-500/20 to-pink-600/20',
       iconGradient: 'from-pink-400 to-pink-600',
     },
     {
-      icon: SparklesIcon,
+      icon: 'transparency',
       title: 'Transparency',
       description: 'Our loyalty tokens leverage the transparency, security, and immutability of blockchain to create a seamless and trusted ecosystem for rewards programs.',
       color: 'text-yellow-400',
+      iconColor: '#0066FF',
       bgGradient: 'from-yellow-500/20 to-yellow-600/20',
       iconGradient: 'from-yellow-400 to-yellow-600',
     },
@@ -107,7 +112,21 @@ const Values = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {values.map((value, index) => {
-            const Icon = value.icon;
+            const renderIcon = () => {
+              switch(value.icon) {
+                case 'security':
+                  return <SecurityShieldIcon className="w-20 h-20" color={value.iconColor} />;
+                case 'innovation':
+                  return <RocketLaunchIcon className="w-20 h-20" style={{ color: value.iconColor }} />;
+                case 'partnership':
+                  return <HandshakeIcon className="w-20 h-20" color={value.iconColor} />;
+                case 'transparency':
+                  return <LinkChainIcon className="w-20 h-20" color={value.iconColor} />;
+                default:
+                  return null;
+              }
+            };
+            
             return (
               <motion.div
                 key={value.title}
@@ -139,7 +158,9 @@ const Values = () => {
                     transition={{ duration: 0.5 }}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${value.iconGradient} opacity-20 blur-xl group-hover:opacity-40 transition-opacity`} />
-                    <Icon className="w-12 h-12 relative z-10" />
+                    <div className="relative z-10">
+                      {renderIcon()}
+                    </div>
                   </motion.div>
                   <div>
                     <h3 className="text-2xl font-bold mb-3 group-hover:text-gradient transition-colors">
