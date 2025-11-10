@@ -12,11 +12,45 @@ import {
   ShieldCheckIcon,
   RocketLaunchIcon,
   DocumentTextIcon,
-  ChatBubbleLeftRightIcon
+  ChatBubbleLeftRightIcon,
+  BeakerIcon
 } from '@heroicons/react/24/outline';
 
 const ProductsPage = () => {
   const products = [
+    {
+      id: 'glycoscan',
+      title: 'GlycoScan',
+      subtitle: 'AI-Powered Glycaemic Response Estimator',
+      tagline: 'Scan. Analyze. Understand your food before you eat it.',
+      shortDescription: 'AI-driven web-based tool that predicts the glycaemic impact of packaged foods from their nutrition labels, empowering users to make smarter, glucose-aware dietary choices.',
+      description: 'GlycoScan uses computer vision, OCR, and scientifically validated heuristics to estimate how your blood sugar may respond to a particular food item in real time. Built with React.js, Node.js, and deployed on Vercel for privacy-first, serverless architecture.',
+      longDescription: 'Using advanced OCR (Google Vision API and Tesseract.js fallback), GlycoScan extracts nutrition data from food labels and calculates net carbs, estimated GI, and glycaemic load (GL). The system then generates a simulated glucose curve showing the expected spike and return to baseline. All calculations are performed client-side, ensuring speed, privacy, and transparency.',
+      icon: BeakerIcon,
+      gradient: 'from-purple-500/20 to-pink-500/20',
+      iconColor: '#A855F7',
+      borderColor: 'border-purple-500/30',
+      images: ['/glycoscan/image.png', '/glycoscan/image copy.png', '/glycoscan/image copy 2.png'],
+      features: [
+        'Image-based nutrition analysis with OCR',
+        'Glycaemic curve simulation visualization',
+        'Impact classification (Low/Moderate/High)',
+        'Privacy-safe, client-side processing',
+        'Dual modes: Label scan & manual input',
+        'Offline-friendly with Tesseract.js fallback',
+      ],
+      metrics: [
+        { label: 'Live Prototype', value: 'Active', icon: RocketLaunchIcon },
+        { label: 'Privacy First', value: '100%', icon: ShieldCheckIcon },
+        { label: 'Response Time', value: '<2s', icon: ClockIcon },
+      ],
+      useCases: [
+        'Diabetes Management',
+        'Health & Wellness Apps',
+        'Nutrition Tracking',
+        'Clinical Research',
+      ],
+    },
     {
       id: 'recyclr',
       title: 'Recyclr',
@@ -224,7 +258,7 @@ const ProductsPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {products.map((product, index) => (
               <motion.div
                 key={product.id}

@@ -30,9 +30,9 @@ const Navbar = () => {
 
   const menuItems = [
     { name: 'Home', path: '/', isRoute: true },
-    { name: 'Services', path: 'services', isRoute: false },
     { name: 'Products', path: '/products', isRoute: true },
-    { name: 'About', path: 'about', isRoute: false },
+    { name: 'About', path: '/about', isRoute: true },
+    { name: 'Careers', path: '/careers', isRoute: true },
     { name: 'Contact', path: '/contact', isRoute: true },
   ];
 
@@ -51,20 +51,20 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-3 cursor-pointer"
-            >
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center space-x-3 cursor-pointer"
+          >
               <img 
                 src="/LoyolaTechLogo.png" 
                 alt="Loyola Tech Logo" 
                 className="w-16 h-16 object-contain"
               />
-              <span className="text-2xl font-bold text-gradient">
-                Loyola Tech
-              </span>
-            </motion.div>
+            <span className="text-2xl font-bold text-gradient">
+              Loyola Tech
+            </span>
+          </motion.div>
           </Link>
 
           {/* Desktop Menu */}
@@ -86,26 +86,26 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.path)}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer relative group"
-                >
+                className="text-gray-300 hover:text-white transition-colors cursor-pointer relative group"
+              >
                   {item.name}
-                  <span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                    style={{ background: 'linear-gradient(to right, #00D4FF, #0066FF)' }}
-                  />
+                <span
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
+                  style={{ background: 'linear-gradient(to right, #00D4FF, #0066FF)' }}
+                />
                 </button>
               )
             ))}
             <Link to="/contact">
-              <button
-                className="px-6 py-2 rounded-lg font-semibold transition-all"
-                style={{
-                  background: 'linear-gradient(135deg, #00D4FF, #0066FF)',
-                  boxShadow: '0 4px 15px rgba(0, 212, 255, 0.3)',
-                }}
-              >
-                Get Started
-              </button>
+            <button
+              className="px-6 py-2 rounded-lg font-semibold transition-all"
+              style={{
+                background: 'linear-gradient(135deg, #00D4FF, #0066FF)',
+                boxShadow: '0 4px 15px rgba(0, 212, 255, 0.3)',
+              }}
+            >
+              Get Started
+            </button>
             </Link>
           </div>
 
@@ -134,9 +134,9 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="block py-2 text-gray-300 hover:text-white transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
                   {item.name}
                 </Link>
               ) : (
