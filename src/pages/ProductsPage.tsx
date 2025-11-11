@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useRef, useState, useEffect } from 'react';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 import { 
   MapIcon, 
   CodeBracketIcon, 
@@ -15,6 +17,482 @@ import {
   ChatBubbleLeftRightIcon,
   BeakerIcon
 } from '@heroicons/react/24/outline';
+
+// Ambient Statistic Rings - Geometric Trust Visualization
+const AmbientRings = () => {
+  const [hoveredRing, setHoveredRing] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const ref1 = useRef<HTMLDivElement>(null);
+  const ref2 = useRef<HTMLDivElement>(null);
+  const ref3 = useRef<HTMLDivElement>(null);
+
+  const audits = useAnimatedCounter(ref1, 3, 2000);
+  const companies = useAnimatedCounter(ref2, 15, 2500);
+  const uptime = useAnimatedCounter(ref3, 98, 2000);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
+  const rings = [
+    {
+      ref: ref1,
+      keyword: 'Audited',
+      tagline: 'By CertiK & Trail of Bits',
+      metric: audits,
+      suffix: '',
+      detail: 'Zero critical vulnerabilities',
+      subtext: 'Comprehensive smart contract audits by leading security firms',
+      color: '#10B981',
+      radius: 180,
+      speed: 25,
+      particles: 8,
+      position: { angle: 200, distance: 360 }, // Left side - moved up and further out
+      dotPosition: { angle: 225, radius: 180 }, // Dot at lower left on the ring
+    },
+    {
+      ref: ref2,
+      keyword: 'Powering',
+      tagline: 'Real Enterprise Use Cases',
+      metric: companies,
+      suffix: '+',
+      detail: '250K+ daily transactions',
+      subtext: 'Production-grade infrastructure trusted by Fortune 500',
+      color: '#06B6D4',
+      radius: 260,
+      speed: 35,
+      particles: 12,
+      position: { angle: 160, distance: 440 }, // Top left - far out
+      dotPosition: { angle: 180, radius: 260 }, // Dot on the middle ring
+    },
+    {
+      ref: ref3,
+      keyword: 'Delivering',
+      tagline: '2.4x Average ROI',
+      metric: uptime,
+      suffix: '%',
+      detail: 'SLA guaranteed uptime',
+      subtext: '50% faster integration vs traditional loyalty systems',
+      color: '#8B5CF6',
+      radius: 340,
+      speed: 45,
+      particles: 16,
+      position: { angle: 20, distance: 240 }, // Top right - closer
+      dotPosition: { angle: 0, radius: 340 }, // Dot on the outer ring
+    },
+  ];
+
+  return (
+    <section ref={containerRef} className="py-32 relative overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+      {/* Ambient Fog */}
+      <div className="absolute inset-0">
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05), rgba(139, 92, 246, 0.05), transparent)',
+          }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.5, 0.7, 0.5],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-3xl md:text-5xl font-light mb-4">
+            <span className="text-gradient">Precision by Design</span>
+          </h2>
+          <p className="text-xl text-gray-400 font-light tracking-wide">
+            Trust expressed through mathematical elegance
+          </p>
+        </motion.div>
+
+        {/* Orbiting Rings Visualization */}
+        <motion.div 
+          style={{ y }}
+          className="relative h-[700px] md:h-[800px] flex items-center justify-center"
+        >
+          {/* SVG Container for Rings */}
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              {rings.map((ring, i) => (
+                <radialGradient key={i} id={`ring-glow-${i}`}>
+                  <stop offset="0%" stopColor={ring.color} stopOpacity="0" />
+                  <stop offset="50%" stopColor={ring.color} stopOpacity="0.3" />
+                  <stop offset="100%" stopColor={ring.color} stopOpacity="0" />
+                </radialGradient>
+              ))}
+            </defs>
+
+            {/* Central Glow */}
+            <motion.circle
+              cx="400"
+              cy="400"
+              r="80"
+              fill="url(#central-glow)"
+              animate={{
+                opacity: [0.4, 0.7, 0.4],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            <radialGradient id="central-glow">
+              <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+            </radialGradient>
+
+            {/* Orbiting Rings */}
+            {rings.map((ring, index) => (
+              <g key={index}>
+                {/* Ring Path */}
+                <motion.circle
+                  cx="400"
+                  cy="400"
+                  r={ring.radius}
+                  stroke={ring.color}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeDasharray="4 8"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 0.4 }}
+                  viewport={{ once: false }}
+                  transition={{ duration: 2, delay: index * 0.3 }}
+                />
+
+                {/* Ambient ring glow */}
+                <motion.circle
+                  cx="400"
+                  cy="400"
+                  r={ring.radius}
+                  stroke={ring.color}
+                  strokeWidth="2"
+                  fill="none"
+                  opacity="0.2"
+                  animate={{
+                    opacity: hoveredRing === index ? [0.2, 0.6, 0.2] : [0.1, 0.2, 0.1],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.5,
+                  }}
+                />
+
+                {/* Orbiting Particles */}
+                {[...Array(ring.particles)].map((_, particleIndex) => {
+                  const angle = (particleIndex / ring.particles) * 360;
+                  return (
+                    <motion.circle
+                      key={particleIndex}
+                      r="2"
+                      fill={ring.color}
+                      animate={{
+                        cx: 400 + ring.radius * Math.cos((angle * Math.PI) / 180),
+                        cy: 400 + ring.radius * Math.sin((angle * Math.PI) / 180),
+                        opacity: [0.3, 0.8, 0.3],
+                      }}
+                      transition={{
+                        cx: {
+                          duration: ring.speed,
+                          repeat: Infinity,
+                          ease: 'linear',
+                        },
+                        cy: {
+                          duration: ring.speed,
+                          repeat: Infinity,
+                          ease: 'linear',
+                        },
+                        opacity: {
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: particleIndex * 0.1,
+                        },
+                      }}
+                      style={{
+                        transformOrigin: '400px 400px',
+                        transform: `rotate(${(angle + (Date.now() / ring.speed) % 360)}deg)`,
+                      }}
+                    />
+                  );
+                })}
+              </g>
+            ))}
+
+            {/* Light Reflections */}
+            {rings.map((ring, index) => (
+              <motion.path
+                key={`reflection-${index}`}
+                d={`M ${400 - ring.radius * 0.3} ${400 - ring.radius * 0.8} Q ${400} ${400 - ring.radius} ${400 + ring.radius * 0.3} ${400 - ring.radius * 0.8}`}
+                stroke={ring.color}
+                strokeWidth="1"
+                fill="none"
+                opacity="0.3"
+                animate={{
+                  opacity: [0.2, 0.5, 0.2],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  delay: index * 0.7,
+                }}
+              />
+            ))}
+
+            {/* Connection Dots on Rings */}
+            {rings.map((ring, index) => {
+              const dotAngle = (ring.dotPosition.angle * Math.PI) / 180;
+              const dotX = 400 + ring.dotPosition.radius * Math.cos(dotAngle);
+              const dotY = 400 + ring.dotPosition.radius * Math.sin(dotAngle);
+              
+              return (
+                <g key={`dot-${index}`}>
+                  {/* Outer glow ring */}
+                  <motion.circle
+                    cx={dotX}
+                    cy={dotY}
+                    r="8"
+                    fill="none"
+                    stroke={ring.color}
+                    strokeWidth="1"
+                    opacity="0.4"
+                    animate={{
+                      r: [8, 12, 8],
+                      opacity: [0.4, 0.8, 0.4],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
+                  {/* Main dot */}
+                  <motion.circle
+                    cx={dotX}
+                    cy={dotY}
+                    r="5"
+                    fill={ring.color}
+                    animate={{
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
+                  {/* Inner highlight */}
+                  <circle
+                    cx={dotX}
+                    cy={dotY}
+                    r="2"
+                    fill="white"
+                    opacity="0.6"
+                  />
+                </g>
+              );
+            })}
+          </svg>
+
+          {/* Central Info Display */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-center"
+            >
+              <div className="w-32 h-32 rounded-full backdrop-blur-xl border border-cyan-500/30 flex items-center justify-center mx-auto mb-8"
+                style={{
+                  background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1), transparent)',
+                  boxShadow: '0 0 60px rgba(6, 182, 212, 0.3), inset 0 0 30px rgba(6, 182, 212, 0.2)',
+                }}
+              >
+                <ShieldCheckIcon className="w-16 h-16 text-cyan-400" />
+              </div>
+              <motion.div
+                animate={{
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                }}
+                className="text-sm uppercase tracking-[0.2em] text-cyan-400 font-light"
+              >
+                VERIFIED
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Interactive Ring Labels - Positioned Around Rings */}
+          {rings.map((ring, index) => {
+            const angleRad = (ring.position.angle * Math.PI) / 180;
+            const x = 50 + (ring.position.distance / 8) * Math.cos(angleRad);
+            const y = 50 + (ring.position.distance / 8) * Math.sin(angleRad);
+            
+            return (
+              <motion.div
+                key={ring.keyword}
+                ref={ring.ref}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, margin: '-100px' }}
+                transition={{ delay: index * 0.4 + 0.8, duration: 0.6 }}
+                onMouseEnter={() => setHoveredRing(index)}
+                onMouseLeave={() => setHoveredRing(null)}
+                className="absolute cursor-pointer"
+                style={{
+                  left: `${x}%`,
+                  top: `${y}%`,
+                  transform: 'translate(-50%, -50%)',
+                }}
+              >
+                <motion.div
+                  className="relative"
+                  animate={{
+                    scale: hoveredRing === index ? 1.08 : 1,
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Info Card */}
+                  <div 
+                    className="glass rounded-2xl px-6 py-5 border backdrop-blur-xl min-w-[240px]"
+                    style={{
+                      borderColor: `${ring.color}40`,
+                      background: `linear-gradient(135deg, ${ring.color}08, ${ring.color}04)`,
+                      boxShadow: hoveredRing === index 
+                        ? `0 0 30px ${ring.color}40, inset 0 0 20px ${ring.color}10`
+                        : `0 0 20px ${ring.color}20, inset 0 0 10px ${ring.color}05`,
+                    }}
+                  >
+                    {/* Top Label */}
+                    <motion.div
+                      className="text-xs uppercase tracking-widest mb-3 font-medium"
+                      style={{ color: ring.color }}
+                      animate={{
+                        opacity: [0.7, 1, 0.7],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: index * 1,
+                      }}
+                    >
+                      {ring.keyword}
+                    </motion.div>
+
+                    {/* Metric Display */}
+                    <div className="flex items-baseline gap-1 mb-2">
+                      <motion.span 
+                        className="text-4xl font-light"
+                        style={{ color: ring.color }}
+                      >
+                        {ring.metric}
+                      </motion.span>
+                      <span 
+                        className="text-2xl font-light"
+                        style={{ color: ring.color }}
+                      >
+                        {ring.suffix}
+                      </span>
+                    </div>
+
+                    {/* Tagline */}
+                    <div className="text-sm font-medium text-white mb-3">
+                      {ring.tagline}
+                    </div>
+
+                    {/* Divider */}
+                    <motion.div 
+                      className="h-px w-full mb-3"
+                      style={{ 
+                        background: `linear-gradient(90deg, transparent, ${ring.color}60, transparent)` 
+                      }}
+                      animate={{
+                        opacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.5,
+                      }}
+                    />
+
+                    {/* Detail Text */}
+                    <div className="text-xs text-gray-400 font-light leading-relaxed">
+                      {ring.detail}
+                    </div>
+
+                    {/* Expandable Details */}
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{
+                        opacity: hoveredRing === index ? 1 : 0,
+                        height: hoveredRing === index ? 'auto' : 0,
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="text-xs text-gray-500 font-light mt-2 pt-2 border-t border-white/5">
+                        {ring.subtext}
+                      </div>
+                    </motion.div>
+
+                    {/* Pulse Indicator */}
+                    <motion.div
+                      className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
+                      style={{ backgroundColor: ring.color }}
+                      animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.6, 1, 0.6],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.4,
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Bottom Tagline */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ delay: 1.5 }}
+          className="text-center mt-8"
+        >
+          <p className="text-gray-500 font-light text-sm tracking-[0.2em] uppercase">
+            Trust • Precision • Control
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const ProductsPage = () => {
   const products = [
@@ -118,25 +596,27 @@ const ProductsPage = () => {
       ],
     },
     {
-      id: 'wallet',
-      title: 'Web3 Loyalty Wallet',
-      subtitle: 'Tokenized Loyalty Platform',
-      tagline: 'Transform loyalty points into valuable digital assets',
-      shortDescription: 'Blockchain-powered platform enabling users to consolidate, trade, and manage loyalty points from multiple brands as tokenized digital assets.',
-      description: 'Revolutionary Web3 platform granting users complete control over loyalty points and miles through blockchain technology. Transform traditional rewards into tradeable digital assets.',
-      longDescription: 'At Loyolatech, we enable consumers to consolidate loyalty points earned from various hotels, airlines, and stores into tokenized assets stored in their digital wallet. These assets can be sold, exchanged, traded, or redeemed in a marketplace. Built on Ethereum and Solana for optimal performance and cost-efficiency.',
+      id: 'paymint',
+      title: 'PayMint',
+      subtitle: 'Web3 Loyalty Tokenization Platform',
+      tagline: 'Revolutionizing loyalty rewards with blockchain technology',
+      shortDescription: 'Web3-powered platform granting users complete control over loyalty points and miles. Consolidate, trade, and monetize rewards from hotels, airlines, and stores as tokenized digital assets.',
+      description: 'PayMint harnesses Web3 technology to revolutionize loyalty programs by enabling consumers to consolidate loyalty points and currency from various brands into tokenized assets. These can be sold, exchanged, traded, or redeemed in a decentralized marketplace.',
+      longDescription: 'Our advanced architecture employs smart contracts to create fungible tokens and NFTs representing loyalty ownership. Brands can deliver offers directly to consumer wallets while receiving a percentage of secondary sales as a new revenue stream. PayMint generates significant value for customers while reducing loyalty program costs for brands. Built on Ethereum and Solana for platform compatibility, scalability, and universal security standards.',
       icon: CreditCardIcon,
       gradient: 'from-cyan-500/20 to-blue-500/20',
       iconColor: '#06B6D4',
       borderColor: 'border-cyan-500/30',
-      images: [],
+      images: ['/paymint/image.png', '/paymint/image copy.png', '/paymint/image copy 2.png'],
       features: [
-        'Cross-brand loyalty point consolidation',
-        'NFT-based ownership tokens',
-        'Smart contract automation',
-        'Decentralized marketplace',
-        'Direct brand-to-consumer offers',
-        'Ethereum & Solana integration',
+        'Complete user control over loyalty assets',
+        'Cross-brand point consolidation',
+        'Fungible tokens & NFT ownership',
+        'Smart contract-powered automation',
+        'Decentralized marketplace trading',
+        'Direct brand-to-wallet offers',
+        'Ethereum & Solana blockchain integration',
+        'Revenue sharing with brands',
       ],
       metrics: [
         { label: 'Cost Savings', value: '$5M+', icon: ChartBarIcon },
@@ -155,9 +635,21 @@ const ProductsPage = () => {
   const scrollToProduct = (productId: string) => {
     const element = document.getElementById(productId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  // Handle hash navigation on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const productId = hash.substring(1); // Remove the '#' character
+      // Wait for the page to render before scrolling
+      setTimeout(() => {
+        scrollToProduct(productId);
+      }, 100);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
@@ -204,7 +696,7 @@ const ProductsPage = () => {
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-light mb-6"
             >
               <span className="text-gradient">Powering the Next Generation</span>
               <br />
@@ -247,10 +739,10 @@ const ProductsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-light mb-4">
               <span className="text-gradient">Our Product Suite</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -264,7 +756,7 @@ const ProductsPage = () => {
                 key={product.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
                 className={`glass rounded-2xl p-8 bg-gradient-to-br ${product.gradient} border ${product.borderColor} hover:border-white/30 transition-all cursor-pointer relative overflow-hidden group`}
@@ -330,7 +822,7 @@ const ProductsPage = () => {
               <motion.div
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
                 className={index % 2 === 1 ? 'lg:col-start-2' : ''}
               >
@@ -374,7 +866,7 @@ const ProductsPage = () => {
                       key={idx}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ delay: 0.05 * idx }}
                       className="flex items-start space-x-2"
                     >
@@ -415,7 +907,7 @@ const ProductsPage = () => {
               <motion.div
                 initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
                 className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}
               >
@@ -471,7 +963,7 @@ const ProductsPage = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: 0.3 }}
                   className="grid grid-cols-3 gap-4 mt-6"
                 >
@@ -500,7 +992,7 @@ const ProductsPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 0.4 }}
               className="mt-12"
             >
@@ -528,7 +1020,7 @@ const ProductsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="glass rounded-3xl p-12 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30"
           >
             <div className="text-center mb-12">
@@ -590,59 +1082,8 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* 7. Trust & Social Proof */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Trusted by Industry Leaders
-            </h2>
-            <p className="text-xl text-gray-400">
-              Powering innovation across the globe
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="glass rounded-2xl p-8"
-            >
-              <ShieldCheckIcon className="w-12 h-12 text-emerald-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Security Audited</h3>
-              <p className="text-gray-400">
-                All our products undergo rigorous security audits by leading firms
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="glass rounded-2xl p-8"
-            >
-              <UserGroupIcon className="w-12 h-12 text-cyan-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Enterprise Ready</h3>
-              <p className="text-gray-400">
-                Scalable solutions trusted by Fortune 500 companies
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="glass rounded-2xl p-8"
-            >
-              <ChartBarIcon className="w-12 h-12 text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Proven Results</h3>
-              <p className="text-gray-400">
-                Delivering measurable ROI and operational efficiency
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* 7. Ambient Statistic Rings - Geometric Trust Visualization */}
+      <AmbientRings />
 
       {/* 8. Final CTA */}
       <section className="py-20">
@@ -650,7 +1091,7 @@ const ProductsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="glass rounded-3xl p-12 md:p-16 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 text-center relative overflow-hidden"
           >
             {/* Animated background */}

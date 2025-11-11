@@ -9,23 +9,23 @@ const CustomCursor = memo(() => {
   const cursorY = useSpring(0, { stiffness: 500, damping: 28 });
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-    cursorX.set(e.clientX);
-    cursorY.set(e.clientY);
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
   }, [cursorX, cursorY]);
 
   const handleMouseEnter = useCallback((e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    if (
-      target.tagName === 'BUTTON' ||
-      target.tagName === 'A' ||
-      target.closest('button') ||
-      target.closest('a')
-    ) {
-      setIsHovering(true);
-    } else {
-      setIsHovering(false);
-    }
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.closest('button') ||
+        target.closest('a')
+      ) {
+        setIsHovering(true);
+      } else {
+        setIsHovering(false);
+      }
   }, []);
 
   useEffect(() => {

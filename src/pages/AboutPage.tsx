@@ -171,7 +171,7 @@ const AboutPage = () => {
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-light mb-6"
             >
               <span className="text-gradient">Building the Future</span>
               <br />
@@ -192,7 +192,7 @@ const AboutPage = () => {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6 }}
               className="glass rounded-3xl p-10 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30"
             >
@@ -209,7 +209,7 @@ const AboutPage = () => {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6 }}
               className="glass rounded-3xl p-10 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30"
             >
@@ -232,7 +232,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -243,7 +243,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="glass rounded-3xl p-10 md:p-12"
           >
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
@@ -273,10 +273,10 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-light mb-4">
               <span className="text-gradient">What We Do</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -290,7 +290,7 @@ const AboutPage = () => {
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
                 className="glass rounded-2xl p-8 border border-white/10 hover:border-white/30 transition-all"
@@ -323,7 +323,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -340,7 +340,7 @@ const AboutPage = () => {
                 key={value.title}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="glass rounded-2xl p-6 text-center border border-white/10 hover:border-white/30 transition-all"
@@ -375,7 +375,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -392,7 +392,7 @@ const AboutPage = () => {
                 key={member.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
                 className="glass rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-all group"
@@ -432,7 +432,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -446,7 +446,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="glass rounded-3xl p-12 text-center"
           >
             <div className="flex justify-center mb-8">
@@ -471,7 +471,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -488,7 +488,7 @@ const AboutPage = () => {
                 key={milestone.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
                 className="glass rounded-2xl p-8 text-center border border-white/10 hover:border-cyan-500/30 transition-all"
@@ -508,7 +508,7 @@ const AboutPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="glass rounded-3xl p-12 md:p-16 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 text-center relative overflow-hidden"
           >
             {/* Animated background */}

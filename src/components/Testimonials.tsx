@@ -61,14 +61,14 @@ const Testimonials = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <motion.h2
             initial={{ scale: 0.8 }}
             whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ type: "spring", stiffness: 200 }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
@@ -85,7 +85,7 @@ const Testimonials = () => {
               key={testimonial.name}
               initial={{ opacity: 0, y: 50, rotateY: -15 }}
               whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ 
                 duration: 0.5, 
                 delay: index * 0.1,
@@ -109,7 +109,7 @@ const Testimonials = () => {
                 className="absolute top-4 right-4 text-6xl text-white/5 font-serif"
                 initial={{ scale: 0, rotate: -180 }}
                 whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
               >
                 "
@@ -120,7 +120,7 @@ const Testimonials = () => {
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
                   className={`w-16 h-16 rounded-full bg-gradient-to-br ${testimonial.avatarGradient} flex items-center justify-center text-white font-bold text-lg mr-4 relative overflow-hidden group-hover:scale-110 transition-transform`}
                 >
@@ -152,7 +152,7 @@ const Testimonials = () => {
                     key={i}
                     initial={{ scale: 0, rotate: -180 }}
                     whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ delay: index * 0.1 + i * 0.1, type: "spring" }}
                   >
                     <StarIcon className="w-5 h-5 text-yellow-400" />

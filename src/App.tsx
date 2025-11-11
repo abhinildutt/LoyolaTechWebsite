@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import MinimalFooter from './components/MinimalFooter';
 import SmoothScroll from './components/SmoothScroll';
 import CustomCursor from './components/CustomCursor';
 import PageLoader from './components/PageLoader';
+import ScrollToTop from './components/ScrollToTop';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -16,6 +17,7 @@ const CareersPage = lazy(() => import('./pages/CareersPage'));
 function App() {
   return (
     <Router>
+      <ScrollToTop />
     <div className="min-h-screen">
       <PageLoader />
       <CustomCursor />
@@ -30,7 +32,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </Suspense>
-      <Footer />
+      <MinimalFooter />
     </div>
     </Router>
   );

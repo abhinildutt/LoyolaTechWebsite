@@ -55,7 +55,7 @@ const Services = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -92,7 +92,7 @@ const Services = () => {
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="glass rounded-xl p-6 border-glow transition-all cursor-pointer relative overflow-hidden group"

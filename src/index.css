@@ -7,12 +7,35 @@
     scroll-behavior: smooth;
     cursor: none !important;
   }
+
+  /* Smooth scroll snap */
+  .snap-y {
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .snap-start {
+    scroll-snap-align: start;
+  }
+  
+  .snap-always {
+    scroll-snap-stop: always;
+  }
+
+  /* Ensure smooth snap scrolling */
+  @supports (scroll-behavior: smooth) {
+    .snap-y {
+      scroll-behavior: smooth;
+    }
+  }
   
   body {
-    @apply bg-gray-900 text-white antialiased;
-    font-family: 'Exo 2', system-ui, -apple-system, sans-serif;
+    @apply bg-gray-950 text-white antialiased;
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
     overflow-x: hidden;
     cursor: none !important;
+    letter-spacing: -0.02em;
   }
   
   a, button, input, textarea, select {
@@ -30,50 +53,60 @@
     }
   }
   
-  /* Custom scrollbar */
+  /* Minimal custom scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-gray-900;
+    @apply bg-gray-950;
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-blue-500 to-purple-600 rounded-full;
+    @apply bg-gray-800 rounded-full;
+    transition: background 0.3s;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    @apply from-blue-600 to-purple-700;
+    @apply bg-cyan-500;
   }
 
-  /* Performance optimizations */
-  [data-animated] {
+  /* Performance optimizations - GPU acceleration */
+  [data-animated],
+  .animate-gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Only use will-change during active animations */
+  [data-animated]:hover,
+  [data-animated]:active {
     will-change: transform, opacity;
   }
 
-  /* Remove will-change after animation */
-  [data-animated]:not(:hover):not(:active) {
-    will-change: auto;
+  /* Optimize repaints */
+  img, video {
+    transform: translateZ(0);
   }
 }
 
 @layer utilities {
+  /* Minimal gradient - lighter animation */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600;
     background-size: 200% auto;
-    animation: gradient-text 3s linear infinite;
   }
   
+  /* Lighter glass effect */
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.15);
   }
   
+  /* Simplified gradient background */
   .gradient-bg {
-    background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #475569);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background: linear-gradient(180deg, #030712 0%, #0c1222 50%, #030712 100%);
   }
   
   /* Glow effect */

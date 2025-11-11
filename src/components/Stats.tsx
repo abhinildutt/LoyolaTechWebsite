@@ -95,7 +95,7 @@ const Stats = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -110,7 +110,7 @@ const Stats = () => {
               key={stat.label}
               initial={{ opacity: 0, y: 50, scale: 0.5 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: false, margin: "-50px" }}
               transition={{
                 duration: 0.5,
                 delay: index * 0.1,
@@ -138,7 +138,7 @@ const Stats = () => {
                 className={`text-5xl md:text-6xl font-bold mb-2 bg-gradient-to-br ${stat.gradient} bg-clip-text text-transparent relative z-10`}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 + 0.2, type: "spring", stiffness: 200 }}
               >
                 <AnimatedNumber end={stat.value} suffix={stat.suffix} />

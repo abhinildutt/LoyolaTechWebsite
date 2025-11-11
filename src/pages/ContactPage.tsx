@@ -134,7 +134,7 @@ const ContactPage = () => {
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-light mb-6"
             >
               <span className="text-gradient">Get in Touch</span>
               <br />
@@ -418,7 +418,7 @@ const ContactPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="glass rounded-3xl p-12 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/30 text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

@@ -262,7 +262,7 @@ const CareersPage = () => {
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-light mb-6"
             >
               <span className="text-gradient">Join Us in Building</span>
               <br />
@@ -296,10 +296,10 @@ const CareersPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-light mb-6">
               <span className="text-gradient">About Working at Loyola Tech</span>
             </h2>
             <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
@@ -317,7 +317,7 @@ const CareersPage = () => {
                 key={value.title}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="glass rounded-2xl p-6 text-center border border-white/10 hover:border-white/30 transition-all"
@@ -352,10 +352,10 @@ const CareersPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-light mb-4">
               <span className="text-gradient">Life at Loyola Tech</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -366,7 +366,7 @@ const CareersPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="glass rounded-3xl p-12 mb-12"
           >
             <div className="flex items-start space-x-4 mb-6">
@@ -386,7 +386,7 @@ const CareersPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               className="glass rounded-2xl p-8 text-center"
             >
               <GlobeAltIcon className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
@@ -399,7 +399,7 @@ const CareersPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 0.1 }}
               className="glass rounded-2xl p-8 text-center"
             >
@@ -413,7 +413,7 @@ const CareersPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 0.2 }}
               className="glass rounded-2xl p-8 text-center"
             >
@@ -433,7 +433,7 @@ const CareersPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -450,7 +450,7 @@ const CareersPage = () => {
                 key={benefit.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="glass rounded-2xl p-8 border border-white/10 hover:border-white/30 transition-all"
@@ -483,7 +483,7 @@ const CareersPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -500,7 +500,7 @@ const CareersPage = () => {
                 key={team.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="glass rounded-2xl p-8 text-center border border-white/10 hover:border-white/30 transition-all"
@@ -533,7 +533,7 @@ const CareersPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -593,7 +593,7 @@ const CareersPage = () => {
                 key={job.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: index * 0.1 }}
                 className="glass rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/30 transition-all"
               >
@@ -700,7 +700,7 @@ const CareersPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="mt-12 glass rounded-3xl p-10 text-center border border-cyan-500/30"
           >
             <h3 className="text-2xl font-bold mb-4">Don't See Your Role?</h3>

@@ -91,14 +91,14 @@ const Values = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <motion.h2
             initial={{ scale: 0.8 }}
             whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ type: "spring", stiffness: 200 }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
@@ -131,7 +131,7 @@ const Values = () => {
                 key={value.title}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, rotateY: index % 2 === 0 ? -15 : 15 }}
                 whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ 
                   scale: 1.02, 
@@ -173,105 +173,369 @@ const Values = () => {
           })}
         </div>
 
-        {/* Custom Blockchain Development Section */}
+        {/* Custom Blockchain Development Section - Enhanced */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="mt-20 glass rounded-3xl p-12 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/20 relative overflow-hidden group"
+          className="mt-20 relative"
         >
-          {/* Animated border */}
-          <motion.div
-            className="absolute inset-0 rounded-3xl"
-            style={{
-              background: 'linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent)',
-              backgroundSize: '200% 100%',
-            }}
-            animate={{
-              backgroundPosition: ['-200%', '200%'],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-          
-          <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div>
-              <motion.h3
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold mb-6 text-gradient"
-              >
-                Custom Blockchain Development
-              </motion.h3>
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="text-gray-300 text-lg leading-relaxed mb-6"
-              >
-                Empower your business with a fast, trustworthy, and convenient tool to eliminate 
-                the manual burden of repeatable operations. Smart contracts will automatically run 
-                on your predefined set of rules and conditions.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="text-gray-400"
-              >
-                Transparency, security, automation, and standardization. The decentralized nature 
-                of properly developed smart contracts allows you to take advantage of all these benefits.
-              </motion.p>
+          {/* Main Card */}
+          <div className="glass rounded-3xl p-8 md:p-12 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-cyan-500/10 border border-white/20 relative overflow-hidden">
+            {/* Animated Mesh Background */}
+            <div className="absolute inset-0 opacity-30">
+              <motion.div
+                className="absolute w-full h-full"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+                  `,
+                  backgroundSize: '50px 50px',
+                }}
+                animate={{
+                  backgroundPosition: ['0px 0px', '50px 50px'],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
             </div>
+
+            {/* Floating orbs */}
             <motion.div
-              className="relative"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              className="absolute top-10 right-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"
+              animate={{
+                scale: [1, 1.3, 1],
+                x: [0, 30, 0],
+                y: [0, -30, 0],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"
+              animate={{
+                scale: [1, 1.4, 1],
+                x: [0, -40, 0],
+                y: [0, 40, 0],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              className="text-center mb-12 relative z-10"
             >
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden group/icon">
-                {/* Rotating gradient border */}
+              <h3 className="text-3xl md:text-5xl font-bold mb-4 text-gradient">
+                Custom Blockchain Development
+              </h3>
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+                Transform your business with enterprise-grade blockchain solutions built for scale, security, and innovation
+              </p>
+            </motion.div>
+
+            {/* Interactive 3-Column Feature Grid */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12 relative z-10">
+              {[
+                {
+                  title: 'Smart Contracts',
+                  desc: 'Automated execution of business logic with zero downtime',
+                  icon: CubeIcon,
+                  color: 'from-blue-400 to-cyan-500',
+                  stats: '99.9% Uptime',
+                },
+                {
+                  title: 'DApp Development',
+                  desc: 'Decentralized applications with seamless user experiences',
+                  icon: RocketLaunchIcon,
+                  color: 'from-purple-400 to-pink-500',
+                  stats: '100% Secure',
+                },
+                {
+                  title: 'Token Systems',
+                  desc: 'Custom tokenomics and loyalty reward mechanisms',
+                  icon: SecurityShieldIcon,
+                  color: 'from-cyan-400 to-blue-500',
+                  stats: 'Infinite Scale',
+                },
+              ].map((feature, idx) => (
                 <motion.div
-                  className="absolute inset-0 rounded-2xl"
-                  style={{
-                    background: 'conic-gradient(from 0deg, transparent, rgba(59, 130, 246, 0.3), transparent)',
-                  }}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                />
-                
-                <div className="text-center relative z-10">
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.03 }}
+                  className="glass rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all relative overflow-hidden group cursor-pointer"
+                >
+                  {/* Glow effect on hover */}
                   <motion.div
-                    className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center relative overflow-hidden group-hover/icon:scale-110 transition-transform"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 1 }}
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity`}
+                  />
+                  
+                  {/* Icon */}
+                  <motion.div
+                    className={`w-16 h-16 rounded-xl bg-gradient-to-br ${feature.color} p-3 mb-4 relative`}
+                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
                   >
+                    <feature.icon className="w-full h-full text-white" />
+                    {/* Pulse effect */}
                     <motion.div
-                      className="absolute inset-0 bg-white/20"
+                      className={`absolute inset-0 rounded-xl bg-gradient-to-br ${feature.color} -z-10`}
                       animate={{
-                        scale: [1, 1.2, 1],
+                        scale: [1, 1.3, 1],
                         opacity: [0.5, 0, 0.5],
                       }}
                       transition={{
                         duration: 2,
                         repeat: Infinity,
+                        delay: idx * 0.3,
                       }}
                     />
-                    <CubeIcon className="w-16 h-16 text-white relative z-10" />
                   </motion.div>
-                  <p className="text-gray-300 font-semibold">Smart Contracts</p>
+
+                  <h4 className="text-xl font-bold mb-2 group-hover:text-gradient transition-colors">
+                    {feature.title}
+                  </h4>
+                  <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                    {feature.desc}
+                  </p>
+                  
+                  {/* Stats badge */}
+                  <motion.div
+                    className={`inline-block px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${feature.color} text-white`}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {feature.stats}
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Interactive Blockchain Visualization */}
+            <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
+              {/* Left: Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false }}
+              >
+                <h4 className="text-2xl font-bold mb-6 flex items-center">
+                  <span className="text-gradient">Why Choose Loyola Tech?</span>
+                </h4>
+                
+                <div className="space-y-4">
+                  {[
+                    { label: 'Enterprise Security', value: 'Military-grade encryption and multi-signature protocols' },
+                    { label: 'Rapid Development', value: 'Launch production-ready solutions in weeks, not months' },
+                    { label: 'Scalability', value: 'Handle millions of transactions without compromising speed' },
+                    { label: 'Full Transparency', value: 'Immutable audit trails and real-time monitoring' },
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: false }}
+                      transition={{ delay: idx * 0.1 }}
+                      whileHover={{ x: 5 }}
+                      className="flex items-start space-x-3 p-3 rounded-lg hover:bg-white/5 transition-colors group cursor-pointer"
+                    >
+                      <motion.div
+                        className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 mt-2"
+                        whileHover={{ scale: 2 }}
+                      />
+                      <div className="flex-1">
+                        <div className="font-semibold text-white mb-1">{item.label}</div>
+                        <div className="text-sm text-gray-400">{item.value}</div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-              </div>
-            </motion.div>
+
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all flex items-center space-x-2"
+                >
+                  <span>Start Your Project</span>
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    →
+                  </motion.span>
+                </motion.button>
+              </motion.div>
+
+              {/* Right: Animated Blockchain Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false }}
+                className="relative h-96"
+              >
+                {/* Blockchain Blocks Animation */}
+                <div className="relative h-full flex items-center justify-center">
+                  {[0, 1, 2].map((blockIdx) => (
+                    <motion.div
+                      key={blockIdx}
+                      className="absolute"
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: false }}
+                      transition={{ delay: blockIdx * 0.2 }}
+                      style={{
+                        left: `${blockIdx * 30}%`,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                      }}
+                    >
+                      {/* Block */}
+                      <motion.div
+                        className="relative w-24 h-24 glass rounded-xl border border-cyan-500/50 flex items-center justify-center"
+                        whileHover={{ 
+                          scale: 1.15,
+                          rotateY: 180,
+                          borderColor: 'rgba(6, 182, 212, 1)',
+                        }}
+                        animate={{
+                          y: [0, -10, 0],
+                        }}
+                        transition={{
+                          y: {
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: blockIdx * 0.3,
+                            ease: "easeInOut",
+                          },
+                        }}
+                      >
+                        {/* Inner glow */}
+                        <motion.div
+                          className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20"
+                          animate={{
+                            opacity: [0.3, 0.6, 0.3],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: blockIdx * 0.3,
+                          }}
+                        />
+                        
+                        <div className="relative z-10 text-center">
+                          <div className="text-cyan-400 font-bold text-xs mb-1">BLOCK</div>
+                          <div className="text-white font-mono text-sm">#{blockIdx + 1}</div>
+                        </div>
+
+                        {/* Particles */}
+                        {[...Array(3)].map((_, particleIdx) => (
+                          <motion.div
+                            key={particleIdx}
+                            className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                            animate={{
+                              x: [0, Math.random() * 40 - 20],
+                              y: [0, Math.random() * 40 - 20],
+                              opacity: [1, 0],
+                              scale: [1, 0],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: particleIdx * 0.5 + blockIdx * 0.2,
+                            }}
+                          />
+                        ))}
+                      </motion.div>
+
+                      {/* Connection Line to Next Block */}
+                      {blockIdx < 2 && (
+                        <motion.div
+                          className="absolute left-full top-1/2 w-16 h-0.5 origin-left"
+                          style={{
+                            background: 'linear-gradient(90deg, rgba(6, 182, 212, 0.5), rgba(6, 182, 212, 0.1))',
+                          }}
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
+                          viewport={{ once: false }}
+                          transition={{ delay: blockIdx * 0.3 + 0.3 }}
+                        >
+                          {/* Animated data flow */}
+                          <motion.div
+                            className="absolute w-2 h-2 bg-cyan-400 rounded-full top-1/2 -translate-y-1/2"
+                            animate={{
+                              x: [0, 64],
+                              opacity: [1, 0],
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              delay: blockIdx * 0.5,
+                              ease: "linear",
+                            }}
+                          />
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  ))}
+
+                  {/* Central connecting ring */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  >
+                    <div className="w-64 h-64 rounded-full border border-dashed border-blue-500/20" />
+                  </motion.div>
+                </div>
+
+                {/* Floating tech labels */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {['Solidity', 'Rust', 'Go', 'Web3.js'].map((tech, idx) => (
+                    <motion.div
+                      key={tech}
+                      className="absolute px-3 py-1 rounded-full glass text-xs font-mono text-cyan-400 border border-cyan-500/30"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: false }}
+                      animate={{
+                        y: [0, -10, 0],
+                      }}
+                      transition={{
+                        y: {
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: idx * 0.5,
+                          ease: "easeInOut",
+                        },
+                      }}
+                      style={{
+                        top: `${20 + idx * 20}%`,
+                        right: idx % 2 === 0 ? '5%' : 'auto',
+                        left: idx % 2 === 1 ? '5%' : 'auto',
+                      }}
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

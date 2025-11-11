@@ -30,7 +30,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5 }}
           >
             <motion.div
@@ -54,7 +54,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <h3 className="font-bold text-lg mb-4">COMPANY</h3>
@@ -64,7 +64,7 @@ const Footer = () => {
                   key={link}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: 0.1 + index * 0.05 }}
                 >
                   <motion.a
@@ -83,7 +83,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h3 className="font-bold text-lg mb-4">VERTICALS</h3>
@@ -93,7 +93,7 @@ const Footer = () => {
                   key={link}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: 0.2 + index * 0.05 }}
                 >
                   <motion.a
@@ -112,7 +112,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h3 className="font-bold text-lg mb-4">SERVICES</h3>
@@ -122,7 +122,7 @@ const Footer = () => {
                   key={link}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: 0.3 + index * 0.05 }}
                 >
                   <motion.a
@@ -142,7 +142,7 @@ const Footer = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="border-t border-gray-800 pt-8"
         >
@@ -194,7 +194,7 @@ const Footer = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="border-t border-gray-800 pt-8 text-center text-gray-400"
         >
