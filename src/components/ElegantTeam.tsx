@@ -125,7 +125,7 @@ const TeamMember = ({ member, index }: TeamMemberProps) => {
       ref={cardRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: '-50px' }}
+      viewport={{ once: true, margin: '-50px' }}
       transition={{ delay: index * 0.1, duration: 0.6 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}

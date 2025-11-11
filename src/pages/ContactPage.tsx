@@ -419,7 +419,7 @@ const ContactPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="glass rounded-3xl p-12 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/30 text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

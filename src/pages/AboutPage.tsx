@@ -5,7 +5,7 @@ import PhilosophyPanels from '../components/PhilosophyPanels';
 import ProcessFlow from '../components/ProcessFlow';
 import ElegantTeam from '../components/ElegantTeam';
 import VisionScene from '../components/VisionScene';
-import PlexusBackground from '../components/PlexusBackground';
+// import PlexusBackground from '../components/PlexusBackground'; // Disabled for performance
 
 /**
  * AboutPage - A Dynamic Brand Story
@@ -20,10 +20,10 @@ import PlexusBackground from '../components/PlexusBackground';
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
-      {/* Fixed animated background */}
-      <div className="fixed inset-0 z-0 opacity-40">
+      {/* Fixed animated background - Disabled for performance */}
+      {/* <div className="fixed inset-0 z-0 opacity-40">
         <PlexusBackground />
-      </div>
+      </div> */}
 
       {/* Content wrapper */}
       <div className="relative z-10">

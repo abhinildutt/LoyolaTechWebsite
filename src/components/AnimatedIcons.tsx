@@ -205,3 +205,5 @@ export const InnovationIcon = ({ color = '#8B5CF6', inView }: { color?: string; 
   </svg>
 );
 
+
+

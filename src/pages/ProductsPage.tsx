@@ -87,21 +87,12 @@ const AmbientRings = () => {
 
   return (
     <section ref={containerRef} className="py-32 relative overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
-      {/* Ambient Fog */}
+      {/* Ambient Fog - Static for performance */}
       <div className="absolute inset-0">
-        <motion.div
-          className="absolute inset-0"
+        <div
+          className="absolute inset-0 opacity-50"
           style={{
             background: 'radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05), rgba(139, 92, 246, 0.05), transparent)',
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.5, 0.7, 0.5],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
           }}
         />
       </div>
@@ -111,7 +102,7 @@ const AmbientRings = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-5xl font-light mb-4">
@@ -173,7 +164,7 @@ const AmbientRings = () => {
                   strokeDasharray="4 8"
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 0.4 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   transition={{ duration: 1.2, delay: index * 0.15 }}
                 />
 
@@ -316,7 +307,7 @@ const AmbientRings = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-center"
             >
@@ -481,7 +472,7 @@ const AmbientRings = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ delay: 1.5 }}
           className="text-center mt-8"
         >
@@ -742,7 +733,7 @@ const ProductsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-light mb-4">
@@ -759,7 +750,7 @@ const ProductsPage = () => {
                 key={product.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
                 className={`glass rounded-2xl p-8 bg-gradient-to-br ${product.gradient} border ${product.borderColor} hover:border-white/30 transition-all cursor-pointer relative overflow-hidden group`}
@@ -825,7 +816,7 @@ const ProductsPage = () => {
               <motion.div
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 className={index % 2 === 1 ? 'lg:col-start-2' : ''}
               >
@@ -869,7 +860,7 @@ const ProductsPage = () => {
                       key={idx}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: false }}
+                      viewport={{ once: true }}
                       transition={{ delay: 0.05 * idx }}
                       className="flex items-start space-x-2"
                     >
@@ -910,7 +901,7 @@ const ProductsPage = () => {
               <motion.div
                 initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}
               >
@@ -966,7 +957,7 @@ const ProductsPage = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                   className="grid grid-cols-3 gap-4 mt-6"
                 >
@@ -995,7 +986,7 @@ const ProductsPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: 0.4 }}
               className="mt-12"
             >
@@ -1023,7 +1014,7 @@ const ProductsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="glass rounded-3xl p-12 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30"
           >
             <div className="text-center mb-12">
@@ -1091,7 +1082,7 @@ const ProductsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="glass rounded-3xl p-12 md:p-16 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 text-center relative overflow-hidden"
           >
             {/* Animated background */}

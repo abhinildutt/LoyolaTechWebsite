@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import MinimalFooter from './components/MinimalFooter';
 import SmoothScroll from './components/SmoothScroll';
-import CustomCursor from './components/CustomCursor';
+// import CustomCursor from './components/CustomCursor'; // Disabled for performance
 import PageLoader from './components/PageLoader';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -20,7 +20,7 @@ function App() {
       <ScrollToTop />
     <div className="min-h-screen">
       <PageLoader />
-      <CustomCursor />
+      {/* <CustomCursor /> */} {/* Disabled for performance */}
       <SmoothScroll />
       <Navbar />
         <Suspense fallback={<PageLoader />}>

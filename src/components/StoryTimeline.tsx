@@ -103,7 +103,7 @@ const StoryTimeline = () => {
                   key={milestone.year}
                   initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, margin: '-100px' }}
+                  viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.8, ease: 'easeOut' }}
                   className={`relative grid md:grid-cols-2 gap-8 items-center ${
                     isEven ? '' : 'md:text-right'
@@ -121,7 +121,7 @@ const StoryTimeline = () => {
                       <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: false }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                         className="inline-flex items-center justify-center px-4 py-2 rounded-full mb-4"
                         style={{
@@ -151,7 +151,7 @@ const StoryTimeline = () => {
                     className="absolute left-8 md:left-1/2 md:-ml-3 top-8"
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: false, margin: '-100px' }}
+                    viewport={{ once: true, margin: '-100px' }}
                     transition={{ duration: 0.5 }}
                   >
                     <div className="relative">

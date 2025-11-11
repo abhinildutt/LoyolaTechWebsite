@@ -94,7 +94,7 @@ const PhilosophyPanel = ({ philosophy, index, isHovered, onHover, onLeave }: Phi
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: '-100px' }}
+      viewport={{ once: true, margin: '-100px' }}
       transition={{ delay: index * 0.2 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={onHover}
