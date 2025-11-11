@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 interface Product {
@@ -13,8 +12,6 @@ interface Product {
 }
 
 const ProductShowcase = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeProduct, setActiveProduct] = useState<number>(0);
 
   const products: Product[] = [
     {
@@ -89,7 +86,6 @@ const ProductShowcase = () => {
                 viewport={{ once: false }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
                 whileHover={{ y: -8 }}
-                onHoverStart={() => setActiveProduct(idx)}
                 className="group cursor-pointer"
               >
                 <Link to="/products">

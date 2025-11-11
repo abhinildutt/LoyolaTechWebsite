@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useInView } from 'framer-motion';
 
 export const useAnimatedCounter = (
-  ref: React.RefObject<HTMLElement>,
+  ref: React.RefObject<HTMLElement | null>,
   end: number,
   duration: number = 2000
 ) => {
   const [count, setCount] = useState(0);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: false, margin: '-100px' });
 
   useEffect(() => {
     if (!isInView) return;
