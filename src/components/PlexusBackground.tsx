@@ -94,7 +94,7 @@ const PlexusBackground = () => {
       }
     };
 
-    animate();
+    animate(0);
 
     return () => {
       window.removeEventListener('resize', resize);
