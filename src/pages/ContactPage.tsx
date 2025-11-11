@@ -72,20 +72,20 @@ const ContactPage = () => {
 
   const departments = [
     {
-      name: 'Admissions',
-      description: 'Questions about programs, enrollment, or student life',
+      name: 'Blockchain & Loyalty Solutions',
+      description: 'Implement Paymint for digital loyalty programs, token management, and enterprise blockchain solutions',
     },
     {
-      name: 'Research',
-      description: 'Research collaborations, lab inquiries, or academic projects',
+      name: 'AI-Powered Solutions',
+      description: 'Integrate GlycoScan or custom AI/ML models for your business needs',
     },
     {
-      name: 'Industry Collaboration',
-      description: 'Partnership opportunities, sponsorships, or joint ventures',
+      name: 'Sustainability & IoT',
+      description: 'Deploy Recyclr or custom IoT solutions for environmental tracking and circular economy initiatives',
     },
     {
-      name: 'Student Inquiry',
-      description: 'Current student support, resources, or technical assistance',
+      name: 'Custom Development & Integration',
+      description: 'API integration, enterprise solutions, and tailored product development for your organization',
     },
   ];
 
@@ -141,8 +141,8 @@ const ContactPage = () => {
               <span className="text-white">with Loyola Tech</span>
             </motion.h1>
             <p className="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto">
-              Whether you're a student, researcher, or industry partner, we're here to help you 
-              connect with the right team at Loyola Tech.
+              Whether you're exploring our products, seeking partnerships, or need custom solutions, 
+              we're here to help you transform your business with cutting-edge technology.
             </p>
           </motion.div>
         </div>
@@ -297,10 +297,11 @@ const ContactPage = () => {
                           className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all text-white"
                         >
                           <option value="" className="bg-gray-800">Select a topic...</option>
-                          <option value="admissions" className="bg-gray-800">Admissions</option>
-                          <option value="research" className="bg-gray-800">Research</option>
-                          <option value="industry" className="bg-gray-800">Industry Collaboration</option>
-                          <option value="student" className="bg-gray-800">Student Inquiry</option>
+                          <option value="blockchain" className="bg-gray-800">Blockchain & Loyalty Solutions</option>
+                          <option value="ai" className="bg-gray-800">AI-Powered Solutions</option>
+                          <option value="sustainability" className="bg-gray-800">Sustainability & IoT</option>
+                          <option value="custom" className="bg-gray-800">Custom Development</option>
+                          <option value="partnership" className="bg-gray-800">Partnership Inquiry</option>
                           <option value="other" className="bg-gray-800">Other</option>
                         </select>
                       </div>
@@ -336,7 +337,7 @@ const ContactPage = () => {
                           />
                         </div>
                         <p className="text-xs text-gray-500 mt-2">
-                          Upload resumes, proposals, or supporting documents (Max 10MB)
+                          Upload proposals, technical requirements, or supporting documents (Max 10MB)
                         </p>
                       </div>
 

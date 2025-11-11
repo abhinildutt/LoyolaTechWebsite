@@ -174,7 +174,7 @@ const AmbientRings = () => {
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 0.4 }}
                   viewport={{ once: false }}
-                  transition={{ duration: 2, delay: index * 0.3 }}
+                  transition={{ duration: 1.2, delay: index * 0.15 }}
                 />
 
                 {/* Ambient ring glow */}
@@ -192,7 +192,7 @@ const AmbientRings = () => {
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    delay: index * 0.5,
+                    delay: index * 0.2,
                   }}
                 />
 
@@ -251,7 +251,7 @@ const AmbientRings = () => {
                 transition={{
                   duration: 4,
                   repeat: Infinity,
-                  delay: index * 0.7,
+                  delay: index * 0.25,
                 }}
               />
             ))}
@@ -280,7 +280,7 @@ const AmbientRings = () => {
                     transition={{
                       duration: 2,
                       repeat: Infinity,
-                      delay: index * 0.3,
+                      delay: index * 0.15,
                     }}
                   />
                   {/* Main dot */}
@@ -295,7 +295,7 @@ const AmbientRings = () => {
                     transition={{
                       duration: 2,
                       repeat: Infinity,
-                      delay: index * 0.3,
+                      delay: index * 0.15,
                     }}
                   />
                   {/* Inner highlight */}
@@ -317,7 +317,7 @@ const AmbientRings = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-center"
             >
               <div className="w-32 h-32 rounded-full backdrop-blur-xl border border-cyan-500/30 flex items-center justify-center mx-auto mb-8"
@@ -356,7 +356,7 @@ const AmbientRings = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false, margin: '-100px' }}
-                transition={{ delay: index * 0.4 + 0.8, duration: 0.6 }}
+                transition={{ delay: index * 0.15 + 0.3, duration: 0.4 }}
                 onMouseEnter={() => setHoveredRing(index)}
                 onMouseLeave={() => setHoveredRing(null)}
                 className="absolute cursor-pointer"
@@ -733,7 +733,10 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* 2. Product Suite Overview (Cards) */}
+      {/* 2. Ambient Statistic Rings - Geometric Trust Visualization */}
+      <AmbientRings />
+
+      {/* 3. Product Suite Overview (Cards) */}
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -807,7 +810,7 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* 3. Product Deep Dive Sections */}
+      {/* 4. Product Deep Dive Sections */}
       {products.map((product, index) => (
         <section 
           key={product.id}
@@ -1014,7 +1017,7 @@ const ProductsPage = () => {
         </section>
       ))}
 
-      {/* 6. Documentation & Developer Onboarding */}
+      {/* 5. Documentation & Developer Onboarding */}
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -1082,10 +1085,7 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* 7. Ambient Statistic Rings - Geometric Trust Visualization */}
-      <AmbientRings />
-
-      {/* 8. Final CTA */}
+      {/* 6. Final CTA */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
