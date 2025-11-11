@@ -53,7 +53,7 @@ const DataFlowHero = () => {
         />
 
         {/* Floating data particles */}
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 15 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 rounded-full bg-cyan-400/40"
@@ -76,7 +76,7 @@ const DataFlowHero = () => {
         ))}
 
         {/* Connecting lines - data flow */}
-        {Array.from({ length: 12 }).map((_, i) => (
+        {Array.from({ length: 6 }).map((_, i) => (
           <motion.div
             key={`line-${i}`}
             className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"

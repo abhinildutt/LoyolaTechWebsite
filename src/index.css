@@ -5,7 +5,6 @@
 @layer base {
   * {
     scroll-behavior: smooth;
-    cursor: none !important;
   }
 
   /* Smooth scroll snap */
@@ -34,12 +33,7 @@
     font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-    cursor: none !important;
     letter-spacing: -0.02em;
-  }
-  
-  a, button, input, textarea, select {
-    cursor: none !important;
   }
 
   /* Respect user's motion preferences */

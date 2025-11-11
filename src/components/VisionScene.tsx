@@ -37,7 +37,7 @@ const VisionScene = () => {
 
       {/* Orbiting nodes/particles */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {Array.from({ length: 12 }).map((_, i) => {
+        {Array.from({ length: 6 }).map((_, i) => {
           const angle = (i * 360) / 12;
           const radius = 250;
           
@@ -72,7 +72,7 @@ const VisionScene = () => {
       </div>
 
       {/* Particle trails moving toward CTA */}
-      {Array.from({ length: 20 }).map((_, i) => (
+      {Array.from({ length: 10 }).map((_, i) => (
         <motion.div
           key={`trail-${i}`}
           className="absolute w-1 h-1 rounded-full bg-cyan-400/40"

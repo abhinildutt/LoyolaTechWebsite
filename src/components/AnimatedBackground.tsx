@@ -11,7 +11,7 @@ const AnimatedBackground = () => {
         className="absolute top-0 right-0 w-[500px] h-[500px] opacity-10"
         style={{
           background: 'radial-gradient(circle, #00D4FF 0%, transparent 70%)',
-          filter: 'blur(80px)',
+          filter: 'blur(40px)',
         }}
       />
       
@@ -19,7 +19,7 @@ const AnimatedBackground = () => {
         className="absolute bottom-0 left-0 w-[400px] h-[400px] opacity-10"
         style={{
           background: 'radial-gradient(circle, #7B3FE4 0%, transparent 70%)',
-          filter: 'blur(80px)',
+          filter: 'blur(40px)',
         }}
       />
 

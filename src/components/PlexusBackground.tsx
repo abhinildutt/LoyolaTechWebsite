@@ -28,8 +28,8 @@ const PlexusBackground = () => {
     window.addEventListener('resize', resize);
 
     // Initialize nodes
-    const nodeCount = 80; // Low density for performance
-    const maxDistance = 150;
+    const nodeCount = 40; // Reduced for better performance
+    const maxDistance = 120;
     
     nodesRef.current = Array.from({ length: nodeCount }, () => ({
       x: Math.random() * canvas.width,
@@ -38,12 +38,26 @@ const PlexusBackground = () => {
       vy: (Math.random() - 0.5) * 0.3,
     }));
 
-    // Animation loop
-    const animate = () => {
+    // Animation loop with FPS limiting
+    let lastTime = 0;
+    const fps = 30; // Limit to 30fps for better performance
+    const interval = 1000 / fps;
+
+    const animate = (currentTime: number) => {
+      animationFrameRef.current = requestAnimationFrame(animate);
+      
+      const deltaTime = currentTime - lastTime;
+      if (deltaTime < interval) return;
+      
+      lastTime = currentTime - (deltaTime % interval);
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw nodes
-      nodesRef.current.forEach((node, i) => {
+      const nodes = nodesRef.current;
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        
         // Update position
         node.x += node.vx;
         node.y += node.vy;
@@ -54,29 +68,30 @@ const PlexusBackground = () => {
 
         // Draw node
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(6, 182, 212, 0.4)'; // Cyan
+        ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(6, 182, 212, 0.3)';
         ctx.fill();
 
-        // Draw connections
-        nodesRef.current.slice(i + 1).forEach((otherNode) => {
+        // Draw connections (only check ahead to avoid duplicates)
+        for (let j = i + 1; j < nodes.length; j++) {
+          const otherNode = nodes[j];
           const dx = node.x - otherNode.x;
           const dy = node.y - otherNode.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy; // Avoid sqrt
+          const maxDistSq = maxDistance * maxDistance;
 
-          if (distance < maxDistance) {
+          if (distSq < maxDistSq) {
+            const distance = Math.sqrt(distSq);
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(otherNode.x, otherNode.y);
-            const opacity = (1 - distance / maxDistance) * 0.15;
+            const opacity = (1 - distance / maxDistance) * 0.1;
             ctx.strokeStyle = `rgba(6, 182, 212, ${opacity})`;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
-        });
-      });
-
-      animationFrameRef.current = requestAnimationFrame(animate);
+        }
+      }
     };
 
     animate();
