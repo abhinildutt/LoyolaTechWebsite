@@ -110,7 +110,6 @@ const GridNodes = ({ isHovered }: { isHovered: boolean }) => {
         {nodes.map((_, i) => {
           const row = Math.floor(i / gridSize);
           const col = i % gridSize;
-          const isEdge = row === 0 || row === gridSize - 1 || col === 0 || col === gridSize - 1;
           const distanceFromCenter = Math.abs(row - 2) + Math.abs(col - 2);
           
           return (
