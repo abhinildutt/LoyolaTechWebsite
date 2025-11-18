@@ -19,19 +19,9 @@ const ElegantTeam = () => {
       focus: 'Product Architecture & Scalability',
       image: '/about/igor.png',
       bio: 'Igor is a technology expert with over 16 years of experience in product development, technology architecture and commercialization of digital solutions and platforms.',
-      education: 'PhD in Cognitive Computing, MIT and Purdue University Alumni',
+      education: 'Salisbury University - Perdue School of Business and Rose-Hulman Institute of Technology',
       linkedin: '#',
       color: '#3B82F6',
-    },
-    {
-      name: 'Abhinil Dutt',
-      role: 'Head of Product Intelligence',
-      focus: 'Development & UX Innovation',
-      image: '/about/abhinil.png',
-      bio: 'Abhinil brings technical expertise in web/app development, UI/UX, Cloud, open source database architecture and software development methodologies.',
-      education: 'UIUC Deans Lister and James Scholar Award Recipient',
-      linkedin: '#',
-      color: '#7B3FE4',
     },
     {
       name: 'Alex McDonald',
@@ -86,8 +76,8 @@ const ElegantTeam = () => {
       </div>
 
       {/* Team Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {team.map((member, index) => (
             <TeamMember key={member.name} member={member} index={index} />
           ))}

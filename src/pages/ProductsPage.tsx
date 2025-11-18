@@ -1,7 +1,7 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useRef, useState, useEffect } from 'react';
-import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
+import { useEffect } from 'react';
+import InnovationMatrix from '../components/InnovationMatrix';
 import { 
   MapIcon, 
   CodeBracketIcon, 
@@ -15,475 +15,9 @@ import {
   RocketLaunchIcon,
   DocumentTextIcon,
   ChatBubbleLeftRightIcon,
-  BeakerIcon
+  BeakerIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline';
-
-// Ambient Statistic Rings - Geometric Trust Visualization
-const AmbientRings = () => {
-  const [hoveredRing, setHoveredRing] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const ref1 = useRef<HTMLDivElement>(null);
-  const ref2 = useRef<HTMLDivElement>(null);
-  const ref3 = useRef<HTMLDivElement>(null);
-
-  const audits = useAnimatedCounter(ref1, 3, 2000);
-  const companies = useAnimatedCounter(ref2, 15, 2500);
-  const uptime = useAnimatedCounter(ref3, 98, 2000);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-
-  const rings = [
-    {
-      ref: ref1,
-      keyword: 'Audited',
-      tagline: 'By CertiK & Trail of Bits',
-      metric: audits,
-      suffix: '',
-      detail: 'Zero critical vulnerabilities',
-      subtext: 'Comprehensive smart contract audits by leading security firms',
-      color: '#10B981',
-      radius: 180,
-      speed: 25,
-      particles: 8,
-      position: { angle: 200, distance: 360 }, // Left side - moved up and further out
-      dotPosition: { angle: 225, radius: 180 }, // Dot at lower left on the ring
-    },
-    {
-      ref: ref2,
-      keyword: 'Powering',
-      tagline: 'Real Enterprise Use Cases',
-      metric: companies,
-      suffix: '+',
-      detail: '250K+ daily transactions',
-      subtext: 'Production-grade infrastructure trusted by Fortune 500',
-      color: '#06B6D4',
-      radius: 260,
-      speed: 35,
-      particles: 12,
-      position: { angle: 160, distance: 440 }, // Top left - far out
-      dotPosition: { angle: 180, radius: 260 }, // Dot on the middle ring
-    },
-    {
-      ref: ref3,
-      keyword: 'Delivering',
-      tagline: '2.4x Average ROI',
-      metric: uptime,
-      suffix: '%',
-      detail: 'SLA guaranteed uptime',
-      subtext: '50% faster integration vs traditional loyalty systems',
-      color: '#8B5CF6',
-      radius: 340,
-      speed: 45,
-      particles: 16,
-      position: { angle: 20, distance: 240 }, // Top right - closer
-      dotPosition: { angle: 0, radius: 340 }, // Dot on the outer ring
-    },
-  ];
-
-  return (
-    <section ref={containerRef} className="py-32 relative overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
-      {/* Ambient Fog - Static for performance */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{
-            background: 'radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05), rgba(139, 92, 246, 0.05), transparent)',
-          }}
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-3xl md:text-5xl font-light mb-4">
-            <span className="text-gradient">Precision by Design</span>
-          </h2>
-          <p className="text-xl text-gray-400 font-light tracking-wide">
-            Trust expressed through mathematical elegance
-          </p>
-        </motion.div>
-
-        {/* Orbiting Rings Visualization */}
-        <motion.div 
-          style={{ y }}
-          className="relative h-[700px] md:h-[800px] flex items-center justify-center"
-        >
-          {/* SVG Container for Rings */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              {rings.map((ring, i) => (
-                <radialGradient key={i} id={`ring-glow-${i}`}>
-                  <stop offset="0%" stopColor={ring.color} stopOpacity="0" />
-                  <stop offset="50%" stopColor={ring.color} stopOpacity="0.3" />
-                  <stop offset="100%" stopColor={ring.color} stopOpacity="0" />
-                </radialGradient>
-              ))}
-            </defs>
-
-            {/* Central Glow */}
-            <motion.circle
-              cx="400"
-              cy="400"
-              r="80"
-              fill="url(#central-glow)"
-              animate={{
-                opacity: [0.4, 0.7, 0.4],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-            <radialGradient id="central-glow">
-              <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
-            </radialGradient>
-
-            {/* Orbiting Rings */}
-            {rings.map((ring, index) => (
-              <g key={index}>
-                {/* Ring Path */}
-                <motion.circle
-                  cx="400"
-                  cy="400"
-                  r={ring.radius}
-                  stroke={ring.color}
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeDasharray="4 8"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.4 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.2, delay: index * 0.15 }}
-                />
-
-                {/* Ambient ring glow */}
-                <motion.circle
-                  cx="400"
-                  cy="400"
-                  r={ring.radius}
-                  stroke={ring.color}
-                  strokeWidth="2"
-                  fill="none"
-                  opacity="0.2"
-                  animate={{
-                    opacity: hoveredRing === index ? [0.2, 0.6, 0.2] : [0.1, 0.2, 0.1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.2,
-                  }}
-                />
-
-                {/* Orbiting Particles */}
-                {[...Array(ring.particles)].map((_, particleIndex) => {
-                  const angle = (particleIndex / ring.particles) * 360;
-                  return (
-                    <motion.circle
-                      key={particleIndex}
-                      r="2"
-                      fill={ring.color}
-                      animate={{
-                        cx: 400 + ring.radius * Math.cos((angle * Math.PI) / 180),
-                        cy: 400 + ring.radius * Math.sin((angle * Math.PI) / 180),
-                        opacity: [0.3, 0.8, 0.3],
-                      }}
-                      transition={{
-                        cx: {
-                          duration: ring.speed,
-                          repeat: Infinity,
-                          ease: 'linear',
-                        },
-                        cy: {
-                          duration: ring.speed,
-                          repeat: Infinity,
-                          ease: 'linear',
-                        },
-                        opacity: {
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: particleIndex * 0.1,
-                        },
-                      }}
-                      style={{
-                        transformOrigin: '400px 400px',
-                        transform: `rotate(${(angle + (Date.now() / ring.speed) % 360)}deg)`,
-                      }}
-                    />
-                  );
-                })}
-              </g>
-            ))}
-
-            {/* Light Reflections */}
-            {rings.map((ring, index) => (
-              <motion.path
-                key={`reflection-${index}`}
-                d={`M ${400 - ring.radius * 0.3} ${400 - ring.radius * 0.8} Q ${400} ${400 - ring.radius} ${400 + ring.radius * 0.3} ${400 - ring.radius * 0.8}`}
-                stroke={ring.color}
-                strokeWidth="1"
-                fill="none"
-                opacity="0.3"
-                animate={{
-                  opacity: [0.2, 0.5, 0.2],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  delay: index * 0.25,
-                }}
-              />
-            ))}
-
-            {/* Connection Dots on Rings */}
-            {rings.map((ring, index) => {
-              const dotAngle = (ring.dotPosition.angle * Math.PI) / 180;
-              const dotX = 400 + ring.dotPosition.radius * Math.cos(dotAngle);
-              const dotY = 400 + ring.dotPosition.radius * Math.sin(dotAngle);
-              
-              return (
-                <g key={`dot-${index}`}>
-                  {/* Outer glow ring */}
-                  <motion.circle
-                    cx={dotX}
-                    cy={dotY}
-                    r="8"
-                    fill="none"
-                    stroke={ring.color}
-                    strokeWidth="1"
-                    opacity="0.4"
-                    animate={{
-                      r: [8, 12, 8],
-                      opacity: [0.4, 0.8, 0.4],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.15,
-                    }}
-                  />
-                  {/* Main dot */}
-                  <motion.circle
-                    cx={dotX}
-                    cy={dotY}
-                    r="5"
-                    fill={ring.color}
-                    animate={{
-                      opacity: [0.8, 1, 0.8],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.15,
-                    }}
-                  />
-                  {/* Inner highlight */}
-                  <circle
-                    cx={dotX}
-                    cy={dotY}
-                    r="2"
-                    fill="white"
-                    opacity="0.6"
-                  />
-                </g>
-              );
-            })}
-          </svg>
-
-          {/* Central Info Display */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="w-32 h-32 rounded-full backdrop-blur-xl border border-cyan-500/30 flex items-center justify-center mx-auto mb-8"
-                style={{
-                  background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1), transparent)',
-                  boxShadow: '0 0 60px rgba(6, 182, 212, 0.3), inset 0 0 30px rgba(6, 182, 212, 0.2)',
-                }}
-              >
-                <ShieldCheckIcon className="w-16 h-16 text-cyan-400" />
-              </div>
-              <motion.div
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                }}
-                className="text-sm uppercase tracking-[0.2em] text-cyan-400 font-light"
-              >
-                VERIFIED
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Interactive Ring Labels - Positioned Around Rings */}
-          {rings.map((ring, index) => {
-            const angleRad = (ring.position.angle * Math.PI) / 180;
-            const x = 50 + (ring.position.distance / 8) * Math.cos(angleRad);
-            const y = 50 + (ring.position.distance / 8) * Math.sin(angleRad);
-            
-            return (
-              <motion.div
-                key={ring.keyword}
-                ref={ring.ref}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false, margin: '-100px' }}
-                transition={{ delay: index * 0.15 + 0.3, duration: 0.4 }}
-                onMouseEnter={() => setHoveredRing(index)}
-                onMouseLeave={() => setHoveredRing(null)}
-                className="absolute cursor-pointer"
-                style={{
-                  left: `${x}%`,
-                  top: `${y}%`,
-                  transform: 'translate(-50%, -50%)',
-                }}
-              >
-                <motion.div
-                  className="relative"
-                  animate={{
-                    scale: hoveredRing === index ? 1.08 : 1,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Info Card */}
-                  <div 
-                    className="glass rounded-2xl px-6 py-5 border backdrop-blur-xl min-w-[240px]"
-                    style={{
-                      borderColor: `${ring.color}40`,
-                      background: `linear-gradient(135deg, ${ring.color}08, ${ring.color}04)`,
-                      boxShadow: hoveredRing === index 
-                        ? `0 0 30px ${ring.color}40, inset 0 0 20px ${ring.color}10`
-                        : `0 0 20px ${ring.color}20, inset 0 0 10px ${ring.color}05`,
-                    }}
-                  >
-                    {/* Top Label */}
-                    <motion.div
-                      className="text-xs uppercase tracking-widest mb-3 font-medium"
-                      style={{ color: ring.color }}
-                      animate={{
-                        opacity: [0.7, 1, 0.7],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 1,
-                      }}
-                    >
-                      {ring.keyword}
-                    </motion.div>
-
-                    {/* Metric Display */}
-                    <div className="flex items-baseline gap-1 mb-2">
-                      <motion.span 
-                        className="text-4xl font-light"
-                        style={{ color: ring.color }}
-                      >
-                        {ring.metric}
-                      </motion.span>
-                      <span 
-                        className="text-2xl font-light"
-                        style={{ color: ring.color }}
-                      >
-                        {ring.suffix}
-                      </span>
-                    </div>
-
-                    {/* Tagline */}
-                    <div className="text-sm font-medium text-white mb-3">
-                      {ring.tagline}
-                    </div>
-
-                    {/* Divider */}
-                    <motion.div 
-                      className="h-px w-full mb-3"
-                      style={{ 
-                        background: `linear-gradient(90deg, transparent, ${ring.color}60, transparent)` 
-                      }}
-                      animate={{
-                        opacity: [0.3, 0.6, 0.3],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.5,
-                      }}
-                    />
-
-                    {/* Detail Text */}
-                    <div className="text-xs text-gray-400 font-light leading-relaxed">
-                      {ring.detail}
-                    </div>
-
-                    {/* Expandable Details */}
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{
-                        opacity: hoveredRing === index ? 1 : 0,
-                        height: hoveredRing === index ? 'auto' : 0,
-                      }}
-                      className="overflow-hidden"
-                    >
-                      <div className="text-xs text-gray-500 font-light mt-2 pt-2 border-t border-white/5">
-                        {ring.subtext}
-                      </div>
-                    </motion.div>
-
-                    {/* Pulse Indicator */}
-                    <motion.div
-                      className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
-                      style={{ backgroundColor: ring.color }}
-                      animate={{
-                        scale: [1, 1.3, 1],
-                        opacity: [0.6, 1, 0.6],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.4,
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* Bottom Tagline */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1.5 }}
-          className="text-center mt-8"
-        >
-          <p className="text-gray-500 font-light text-sm tracking-[0.2em] uppercase">
-            Trust • Precision • Control
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
 
 const ProductsPage = () => {
   const products = [
@@ -568,6 +102,7 @@ const ProductsPage = () => {
       iconColor: '#3B82F6',
       borderColor: 'border-blue-500/30',
       images: ['/coderhub/image.png', '/coderhub/image2.png', '/coderhub/image3.png'],
+      comingSoon: true,
       features: [
         'Gen AI powered code generation',
         'Pre-built code libraries & templates',
@@ -601,6 +136,7 @@ const ProductsPage = () => {
       iconColor: '#06B6D4',
       borderColor: 'border-cyan-500/30',
       images: ['/paymint/image.png', '/paymint/image copy.png', '/paymint/image copy 2.png'],
+      comingSoon: true,
       features: [
         'Complete user control over loyalty assets',
         'Cross-brand point consolidation',
@@ -621,6 +157,46 @@ const ProductsPage = () => {
         'Airline Miles Management',
         'Hotel Rewards Systems',
         'E-commerce Platforms',
+      ],
+    },
+    {
+      id: 'imprio',
+      title: 'Imprio',
+      subtitle: 'AI-Powered Radiology Workflow Optimization',
+      tagline: 'Faster Care, Less Backlog',
+      shortDescription: 'Smarter triage for urgent imaging powered by AI-driven prioritization, NHS-validated models, and seamless clinical integration for proven workflow impact.',
+      description: 'Imprio streamlines radiology workflows with AI-driven triage that intelligently prioritizes urgent imaging studies. Built for clinical governance with NHS-validated models and explainable outputs, Imprio ensures critical findings never get buried in growing backlogs.',
+      longDescription: 'Imprio addresses the post-pandemic surge in radiology backlogs with intelligent workflow automation. The system analyzes incoming imaging studies using clinically validated AI models to identify urgent cases, generates explainable heatmaps highlighting areas of concern, and automatically reorders worklists to ensure time-critical studies reach radiologists first. With retrospective validation, shadow mode testing, and prospective integration pathways, Imprio provides safe rollout options that maintain clinical governance standards. The platform integrates seamlessly with existing PACS/RIS infrastructure, supports CS.1229 safety standards, and delivers measurable improvements in time-to-diagnosis without requiring additional radiology headcount.',
+      icon: PhotoIcon,
+      gradient: 'from-indigo-500/20 to-blue-500/20',
+      iconColor: '#6366F1',
+      borderColor: 'border-indigo-500/30',
+      images: ['/imprio/image.png'],
+      comingSoon: true,
+      features: [
+        'AI-driven urgent imaging prioritization',
+        'NHS-validated clinical models',
+        'Explainable AI with heatmap visualization',
+        'Automatic worklist reordering',
+        'Real-time radiologist review integration',
+        'Seamless PACS/RIS integration',
+        'Safe rollout with shadow mode testing',
+        'CS.1229 safety case compliance',
+        'EPR and workflow system updates',
+        'Retrospective and prospective validation',
+      ],
+      metrics: [
+        { label: 'Faster Time-to-Read', value: '30-50%', icon: ClockIcon },
+        { label: 'Throughput Increase', value: '+10-15%', icon: ChartBarIcon },
+        { label: 'Compliance', value: 'Higher', icon: ShieldCheckIcon },
+      ],
+      useCases: [
+        'Hospital Radiology Departments',
+        'Emergency Imaging Services',
+        'Multi-site Radiology Networks',
+        'Teleradiology Providers',
+        'Academic Medical Centers',
+        'Clinical Governance Programs',
       ],
     },
   ];
@@ -726,8 +302,8 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* 2. Ambient Statistic Rings - Geometric Trust Visualization */}
-      <AmbientRings />
+      {/* 2. Innovation Matrix - Core Capabilities Visualization */}
+      <InnovationMatrix />
 
       {/* 3. Product Suite Overview (Cards) */}
       <section className="py-20 relative">
@@ -746,7 +322,7 @@ const ProductsPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {products.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -755,7 +331,7 @@ const ProductsPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className={`glass rounded-2xl p-8 bg-gradient-to-br ${product.gradient} border ${product.borderColor} hover:border-white/30 transition-all cursor-pointer relative overflow-hidden group`}
+                className={`glass rounded-2xl p-6 bg-gradient-to-br ${product.gradient} border ${product.borderColor} hover:border-white/30 transition-all cursor-pointer relative overflow-hidden group`}
                 onClick={() => scrollToProduct(product.id)}
               >
                 {/* Glow effect */}
@@ -764,6 +340,20 @@ const ProductsPage = () => {
                 />
 
                 <div className="relative z-10">
+                  {/* Coming Soon Badge */}
+                  {product.comingSoon && (
+                    <div className="absolute -top-2 -right-2">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", delay: 0.3 }}
+                        className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-700/80 text-gray-300 border border-gray-600 shadow-md"
+                      >
+                        Coming Live Soon
+                      </motion.div>
+                    </div>
+                  )}
+                  
                   {/* Icon */}
                   <div 
                     className="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
@@ -877,53 +467,86 @@ const ProductsPage = () => {
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  {product.demoLink ? (
-                    <a href={product.demoLink} target="_blank" rel="noopener noreferrer">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3 rounded-xl font-bold transition-all text-white w-full"
-                        style={{
-                          background: `linear-gradient(135deg, ${product.iconColor}, ${product.iconColor}CC)`,
-                          boxShadow: `0 10px 30px ${product.iconColor}40`,
-                        }}
-                      >
-                        Try Demo
-                      </motion.button>
-                    </a>
+                  {product.comingSoon ? (
+                    <>
+                      {/* Coming Soon Status Card */}
+                      <div className="w-full glass rounded-xl p-6 border-2 border-dashed border-gray-600">
+                        <div className="flex items-center justify-center space-x-3 mb-3">
+                          <ClockIcon className="w-6 h-6 text-amber-500" />
+                          <span className="text-xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                            In Development
+                          </span>
+                        </div>
+                        <p className="text-sm text-gray-400 text-center mb-4">
+                          We're working hard to bring this product to life. Stay tuned for updates!
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <button
+                            disabled
+                            className="flex-1 px-6 py-3 rounded-xl font-bold transition-all text-gray-500 bg-gray-800/50 border border-gray-700 cursor-not-allowed opacity-60"
+                          >
+                            Get Started
+                          </button>
+                          <button
+                            disabled
+                            className="flex-1 px-6 py-3 rounded-xl font-bold transition-all text-gray-500 bg-gray-800/50 border border-gray-700 cursor-not-allowed opacity-60"
+                          >
+                            View Documentation
+                          </button>
+                        </div>
+                      </div>
+                    </>
                   ) : (
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-6 py-3 rounded-xl font-bold transition-all text-white"
-                      style={{
-                        background: `linear-gradient(135deg, ${product.iconColor}, ${product.iconColor}CC)`,
-                        boxShadow: `0 10px 30px ${product.iconColor}40`,
-                      }}
-                    >
-                      Get Started
-                    </motion.button>
-                  )}
-                  {product.documentationLink ? (
-                    <a href={product.documentationLink} target="_blank" rel="noopener noreferrer">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3 rounded-xl font-bold transition-all glass w-full"
-                        style={{ borderColor: `${product.iconColor}40` }}
-                      >
-                        View Documentation
-                      </motion.button>
-                    </a>
-                  ) : (
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-6 py-3 rounded-xl font-bold transition-all glass"
-                      style={{ borderColor: `${product.iconColor}40` }}
-                    >
-                      View Documentation
-                    </motion.button>
+                    <>
+                      {product.demoLink ? (
+                        <a href={product.demoLink} target="_blank" rel="noopener noreferrer">
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-6 py-3 rounded-xl font-bold transition-all text-white w-full"
+                            style={{
+                              background: `linear-gradient(135deg, ${product.iconColor}, ${product.iconColor}CC)`,
+                              boxShadow: `0 10px 30px ${product.iconColor}40`,
+                            }}
+                          >
+                            Try Demo
+                          </motion.button>
+                        </a>
+                      ) : (
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="px-6 py-3 rounded-xl font-bold transition-all text-white"
+                          style={{
+                            background: `linear-gradient(135deg, ${product.iconColor}, ${product.iconColor}CC)`,
+                            boxShadow: `0 10px 30px ${product.iconColor}40`,
+                          }}
+                        >
+                          Get Started
+                        </motion.button>
+                      )}
+                      {product.documentationLink ? (
+                        <a href={product.documentationLink} target="_blank" rel="noopener noreferrer">
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-6 py-3 rounded-xl font-bold transition-all glass w-full"
+                            style={{ borderColor: `${product.iconColor}40` }}
+                          >
+                            View Documentation
+                          </motion.button>
+                        </a>
+                      ) : (
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="px-6 py-3 rounded-xl font-bold transition-all glass"
+                          style={{ borderColor: `${product.iconColor}40` }}
+                        >
+                          View Documentation
+                        </motion.button>
+                      )}
+                    </>
                   )}
                 </div>
               </motion.div>
