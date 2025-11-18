@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { 
   ArrowLeftIcon,
@@ -73,7 +73,6 @@ As cities and industries look for solutions that deliver impact without heavy ca
 
 const BlogPostPage = () => {
   const { postId } = useParams<{ postId: string }>();
-  const navigate = useNavigate();
   const contentRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
 
