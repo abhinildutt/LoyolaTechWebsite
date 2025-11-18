@@ -1,13 +1,19 @@
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
+interface FooterLink {
+  name: string;
+  path: string;
+  external?: boolean;
+}
+
 const MinimalFooter = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   
-  const links = {
+  const links: Record<string, FooterLink[]> = {
     Products: [
-      { name: 'GlycoScan', path: '/products#glycoscan' },
+      { name: 'GlycoScan', path: 'https://glycoscan.vercel.app/', external: true },
       { name: 'Paymint', path: '/products#paymint' },
       { name: 'Recyclr', path: '/products#recyclr' },
       { name: 'CoderHub', path: '/products#coderhub' }
@@ -18,7 +24,7 @@ const MinimalFooter = () => {
       { name: 'Contact', path: '/contact' }
     ],
     Resources: [
-      { name: 'Documentation', path: '/contact' },
+      { name: 'Documentation', path: 'https://github.com/abhinildutt/blood-sugar-calculator', external: true },
       { name: 'API Reference', path: '/contact' },
       { name: 'Support', path: '/contact' }
     ],
@@ -76,7 +82,7 @@ const MinimalFooter = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto">
-              Transform your business with blockchain technology that's secure, scalable, and beautifully simple.
+              Transform your business with digital products that are secure, scalable, and beautifully simple.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -126,7 +132,7 @@ const MinimalFooter = () => {
                 </motion.div>
               </Link>
               <p className="text-gray-500 text-sm font-light leading-relaxed">
-                Building the future of loyalty systems with blockchain technology.
+                Building innovative digital products that transform businesses.
               </p>
             </div>
 
@@ -137,14 +143,25 @@ const MinimalFooter = () => {
                 <ul className="space-y-3">
                   {items.map((item) => (
                     <li key={item.name}>
-                      <Link to={item.path}>
-                        <motion.span
-                          whileHover={{ x: 2 }}
-                          className="text-gray-500 hover:text-cyan-400 transition-colors text-sm font-light inline-block cursor-pointer"
-                        >
-                          {item.name}
-                        </motion.span>
-                      </Link>
+                      {item.external ? (
+                        <a href={item.path} target="_blank" rel="noopener noreferrer">
+                          <motion.span
+                            whileHover={{ x: 2 }}
+                            className="text-gray-500 hover:text-cyan-400 transition-colors text-sm font-light inline-block cursor-pointer"
+                          >
+                            {item.name}
+                          </motion.span>
+                        </a>
+                      ) : (
+                        <Link to={item.path}>
+                          <motion.span
+                            whileHover={{ x: 2 }}
+                            className="text-gray-500 hover:text-cyan-400 transition-colors text-sm font-light inline-block cursor-pointer"
+                          >
+                            {item.name}
+                          </motion.span>
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

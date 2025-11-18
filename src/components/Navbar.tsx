@@ -55,7 +55,7 @@ const Navbar = () => {
               <img 
                 src="/LoyolaTechLogo.png" 
                 alt="Loyola Tech Logo" 
-                className="w-16 h-16 object-contain"
+                className="w-14 h-14 object-contain mt-3"
               />
             <span className="text-2xl font-semibold text-white">
               Loyola<span className="text-cyan-400">Tech</span>

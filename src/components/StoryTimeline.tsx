@@ -17,27 +17,33 @@ const StoryTimeline = () => {
     },
     {
       year: '2021',
-      title: 'First Platform',
-      description: 'Launched our blockchain infrastructure, bridging traditional and decentralized systems.',
+      title: 'Research & Planning',
+      description: 'Field research and business case finalized. Schema of PayMint formalized',
       color: '#3B82F6'
     },
     {
       year: '2022',
-      title: 'AI Integration',
-      description: 'Merged artificial intelligence with blockchain for intelligent, adaptive systems.',
+      title: 'Company Formation',
+      description: 'LoyolaTech was formed and registered at Delaware, USA',
       color: '#7B3FE4'
     },
     {
       year: '2023',
-      title: 'Global Expansion',
-      description: 'Reached 5,000+ developers and 50+ enterprise partners worldwide.',
+      title: 'Development & Partnerships',
+      description: 'PayMint enhanced for MVP, Development partnership at Portugal',
       color: '#10B981'
     },
     {
       year: '2024',
-      title: 'The Ecosystem',
-      description: 'Now, building ecosystems where every transaction carries trust.',
+      title: 'Innovation & Agreements',
+      description: 'GlocoScan Innovation, PayMint MOU signed',
       color: '#EC4899'
+    },
+    {
+      year: '2025',
+      title: 'Recognition & Growth',
+      description: 'Won Golden Bridge award, Product Imprio finalized, MOU finalized for GlycoScan',
+      color: '#F59E0B'
     },
   ];
 

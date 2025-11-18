@@ -114,7 +114,7 @@ const MinimalHero = () => {
             transition={{ delay: 0.2 }}
             className="inline-flex items-center mb-8 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 backdrop-blur-sm"
           >
-            <span className="text-cyan-400 text-sm font-light tracking-wide">BLOCKCHAIN REIMAGINED</span>
+            <span className="text-cyan-400 text-sm font-light tracking-wide">DIGITAL PRODUCTS</span>
           </motion.div>
 
           {/* Poetic headline */}
@@ -137,7 +137,7 @@ const MinimalHero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed"
           >
-            We engineer transparent loyalty systems where every interaction builds lasting value.
+            We engineer transparent digital products where every interaction builds lasting value
           </motion.p>
 
           {/* Minimal CTAs */}

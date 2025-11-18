@@ -519,6 +519,8 @@ const ProductsPage = () => {
         'Nutrition Tracking',
         'Clinical Research',
       ],
+      demoLink: 'https://glycoscan.vercel.app/',
+      documentationLink: 'https://github.com/abhinildutt/blood-sugar-calculator',
     },
     {
       id: 'recyclr',
@@ -875,25 +877,54 @@ const ProductsPage = () => {
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 rounded-xl font-bold transition-all text-white"
-                    style={{
-                      background: `linear-gradient(135deg, ${product.iconColor}, ${product.iconColor}CC)`,
-                      boxShadow: `0 10px 30px ${product.iconColor}40`,
-                    }}
-                  >
-                    Get Started
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 rounded-xl font-bold transition-all glass"
-                    style={{ borderColor: `${product.iconColor}40` }}
-                  >
-                    View Documentation
-                  </motion.button>
+                  {product.demoLink ? (
+                    <a href={product.demoLink} target="_blank" rel="noopener noreferrer">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-6 py-3 rounded-xl font-bold transition-all text-white w-full"
+                        style={{
+                          background: `linear-gradient(135deg, ${product.iconColor}, ${product.iconColor}CC)`,
+                          boxShadow: `0 10px 30px ${product.iconColor}40`,
+                        }}
+                      >
+                        Try Demo
+                      </motion.button>
+                    </a>
+                  ) : (
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-6 py-3 rounded-xl font-bold transition-all text-white"
+                      style={{
+                        background: `linear-gradient(135deg, ${product.iconColor}, ${product.iconColor}CC)`,
+                        boxShadow: `0 10px 30px ${product.iconColor}40`,
+                      }}
+                    >
+                      Get Started
+                    </motion.button>
+                  )}
+                  {product.documentationLink ? (
+                    <a href={product.documentationLink} target="_blank" rel="noopener noreferrer">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-6 py-3 rounded-xl font-bold transition-all glass w-full"
+                        style={{ borderColor: `${product.iconColor}40` }}
+                      >
+                        View Documentation
+                      </motion.button>
+                    </a>
+                  ) : (
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-6 py-3 rounded-xl font-bold transition-all glass"
+                      style={{ borderColor: `${product.iconColor}40` }}
+                    >
+                      View Documentation
+                    </motion.button>
+                  )}
                 </div>
               </motion.div>
 
