@@ -32,6 +32,7 @@ const Navbar = () => {
     { name: 'Home', path: '/', isRoute: true },
     { name: 'Products', path: '/products', isRoute: true },
     { name: 'About', path: '/about', isRoute: true },
+    { name: 'Blog', path: '/blog', isRoute: true },
     { name: 'Careers', path: '/careers', isRoute: true },
     { name: 'Contact', path: '/contact', isRoute: true },
   ];
