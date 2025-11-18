@@ -720,10 +720,12 @@ const ProductsPage = () => {
                 <p className="text-gray-400 mb-4">
                   Join 5,000+ developers building the future
                 </p>
-                <button className="text-purple-400 font-semibold flex items-center justify-center mx-auto space-x-2">
-                  <span>Join Discord</span>
-                  <ArrowRightIcon className="w-4 h-4" />
-                </button>
+                <a href="https://discord.gg/26tbn9fw" target="_blank" rel="noopener noreferrer">
+                  <button className="text-purple-400 font-semibold flex items-center justify-center mx-auto space-x-2 hover:text-purple-300 transition-colors">
+                    <span>Join Discord</span>
+                    <ArrowRightIcon className="w-4 h-4" />
+                  </button>
+                </a>
               </motion.div>
             </div>
           </motion.div>
@@ -781,13 +783,15 @@ const ProductsPage = () => {
                     Contact Sales
                   </motion.button>
                 </Link>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-10 py-4 rounded-xl font-bold text-lg transition-all glass border border-blue-500/30 hover:border-blue-500/60"
-                >
-                  Join Community
-                </motion.button>
+                <a href="https://discord.gg/26tbn9fw" target="_blank" rel="noopener noreferrer">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-10 py-4 rounded-xl font-bold text-lg transition-all glass border border-blue-500/30 hover:border-blue-500/60"
+                  >
+                    Join Community
+                  </motion.button>
+                </a>
               </div>
             </div>
           </motion.div>

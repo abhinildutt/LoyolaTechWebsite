@@ -429,24 +429,28 @@ const ContactPage = () => {
               Connect with 5,000+ developers, researchers, and innovators building the future of technology
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 rounded-xl font-bold transition-all"
-                style={{
-                  background: 'linear-gradient(135deg, #10B981, #06B6D4)',
-                  boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)',
-                }}
-              >
-                Join Discord
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 rounded-xl font-bold transition-all glass border border-cyan-500/30 hover:border-cyan-500/60"
-              >
-                Follow on Twitter
-              </motion.button>
+              <a href="https://discord.gg/26tbn9fw" target="_blank" rel="noopener noreferrer">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 rounded-xl font-bold transition-all w-full"
+                  style={{
+                    background: 'linear-gradient(135deg, #10B981, #06B6D4)',
+                    boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)',
+                  }}
+                >
+                  Join Discord
+                </motion.button>
+              </a>
+              <a href="https://twitter.com/tech_loyola" target="_blank" rel="noopener noreferrer">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 rounded-xl font-bold transition-all glass border border-cyan-500/30 hover:border-cyan-500/60 w-full"
+                >
+                  Follow on Twitter
+                </motion.button>
+              </a>
             </div>
           </motion.div>
         </div>
