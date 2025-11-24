@@ -114,7 +114,7 @@ const MinimalHero = () => {
             transition={{ delay: 0.2 }}
             className="inline-flex items-center mb-8 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 backdrop-blur-sm"
           >
-            <span className="text-cyan-400 text-sm font-light tracking-wide">DIGITAL PRODUCTS</span>
+            <span className="text-cyan-400 text-sm font-light tracking-wide">DIGITAL PRODUCTS REIMAGINED</span>
           </motion.div>
 
           {/* Poetic headline */}

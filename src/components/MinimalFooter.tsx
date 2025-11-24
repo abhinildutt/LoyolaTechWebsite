@@ -12,16 +12,20 @@ const MinimalFooter = () => {
   const isHomePage = location.pathname === '/';
   
   const links: Record<string, FooterLink[]> = {
+    Pages: [
+      { name: 'Home', path: '/' },
+      { name: 'Products', path: '/products' },
+      { name: 'About', path: '/about' },
+      { name: 'Blog', path: '/blog' },
+      { name: 'News', path: '/news' },
+      { name: 'Careers', path: '/careers' },
+      { name: 'Contact', path: '/contact' }
+    ],
     Products: [
       { name: 'GlycoScan', path: 'https://glycoscan.vercel.app/', external: true },
       { name: 'Paymint', path: '/products#paymint' },
       { name: 'Recyclr', path: '/products#recyclr' },
       { name: 'CoderHub', path: '/products#coderhub' }
-    ],
-    Company: [
-      { name: 'About', path: '/about' },
-      { name: 'Careers', path: '/careers' },
-      { name: 'Contact', path: '/contact' }
     ],
     Resources: [
       { name: 'Documentation', path: 'https://github.com/abhinildutt/blood-sugar-calculator', external: true },

@@ -453,8 +453,8 @@ const SmoothCurves = ({ isHovered }: { isHovered: boolean }) => {
               duration: 2,
               repeat: Infinity,
               delay: i * 0.2,
-            }}
-          />
+          }}
+        />
         ))}
       </svg>
     </div>
@@ -626,7 +626,7 @@ const GeometricPatterns = ({ isHovered }: { isHovered: boolean }) => {
                 duration: 1.5,
                 repeat: Infinity,
               }}
-            />
+          />
           </motion.div>
         </motion.div>
         
